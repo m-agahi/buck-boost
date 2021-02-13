@@ -59,7 +59,7 @@
         <targetDevice>dsPIC33CH512MP508</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>PKOBSKDEPlatformTool</platformTool>
+        <platformTool>Simulator</platformTool>
         <languageToolchain>XC16</languageToolchain>
         <languageToolchainVersion>1.61</languageToolchainVersion>
         <platform>2</platform>

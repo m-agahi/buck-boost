@@ -14,6 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 *******************************************************************************/
 
+
+
+
+
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -27,6 +31,7 @@ limitations under the License.
 #include "debounce.h"
 #include "msi.h"
 #include "uart1.h"
+
 
 #pragma message "Connect USB-UART port on board to your PC and set COM port to: 230400 baud, 8-bit, 1 stop."
 
