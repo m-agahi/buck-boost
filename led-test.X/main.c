@@ -46,7 +46,13 @@
   Section: Included Files
 */
 #include "mcc_generated_files/system.h"
-#include <stdlib.h>
+//#include <libpic30.h>
+#include <p33CH512MP508.h>
+#include <xc.h>
+
+#define    FCY    16000000UL    // Instruction cycle frequency, Hz - required for __delayXXX() to work
+#include <libpic30.h>        // __delayXXX() functions macros defined here
+
 
 /*
                          Main application
@@ -58,9 +64,16 @@ int main(void)
     while (1)
     {
         // Add your application code
-        LATE.bit 0 =1;
         
-        
+        _LATE0=0;
+        _LATE1=1;
+        while (1)
+        {
+            __delay_ms(100);
+            _LATE0=~_LATE0;
+            _LATE1=~_LATE1;
+        }
+            
     }
     return 1; 
 }
