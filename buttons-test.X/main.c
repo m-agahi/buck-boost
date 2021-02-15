@@ -28,7 +28,6 @@
  */
 
 
-
 #include "xc.h"
 #include <p33CH512MP508.h>
 
@@ -37,18 +36,28 @@
 
 int main(void)
 {
-    int s1;
-    int s2;
+    
+    // initialize the device
+    SYSTEM_Initialize();
     
     while (1)
     {
-        s1=_LATE7;
-        s2=_LATE8;
-        if (s1==1)
+        if (PORTEbits.RE7==0)
         {
-            _RE0=1;
+            _LATE0=1;
         }
-        __delay_ms(100);
+        else
+        {
+            _LATE0=0;
+        }
+        if (PORTEbits.RE8==0)
+        {
+            _LATE1=0;
+        }
+        else
+        {
+            _LATE1=1;
+        }
     }
     return 0;
 }
