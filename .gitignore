@@ -8,3 +8,6 @@
 /led-test.X/build/
 /buttons-test.X/dist/
 /buttons-test.X/build/
+/potentiometer-test.X/build/
+/adc-test.X/build/
+/adc-test.X/dist/
