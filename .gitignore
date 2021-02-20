@@ -11,3 +11,7 @@
 /potentiometer-test.X/build/
 /adc-test.X/build/
 /adc-test.X/dist/
+/buck-test.X/dist/
+/buck-test.X/build/
+/boost-test.X/build/
+/boost-test.X/dist/

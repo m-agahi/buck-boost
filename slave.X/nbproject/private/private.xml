@@ -5,6 +5,23 @@
         <group>
             <file>file:/home/max/University/DigitalControl/Curosity/git/buck-boost/slave.X/main.c</file>
             <file>file:/home/max/University/DigitalControl/Curosity/git/buck-boost/slave.X/transient_load.c</file>
+            <file>file:/home/max/University/DigitalControl/Curosity/git/buck-boost/slave.X/compensator_init.c</file>
+            <file>file:/home/max/University/DigitalControl/Curosity/git/buck-boost/slave.X/compensator_init.h</file>
+            <file>file:/home/max/University/DigitalControl/Curosity/git/buck-boost/slave.X/timer_1ms.c</file>
+            <file>file:/home/max/University/DigitalControl/Curosity/git/buck-boost/slave.X/pdm_dac.c</file>
+            <file>file:/home/max/University/DigitalControl/Curosity/git/buck-boost/slave.X/pwm.c</file>
+            <file>file:/home/max/University/DigitalControl/Curosity/git/buck-boost/slave.X/system.c</file>
+            <file>file:/home/max/University/DigitalControl/Curosity/git/buck-boost/slave.X/buck_dcdt_v1.h</file>
+            <file>file:/home/max/University/DigitalControl/Curosity/git/buck-boost/slave.X/msi.h</file>
+            <file>file:/home/max/University/DigitalControl/Curosity/git/buck-boost/slave.X/smps_control.h</file>
+            <file>file:/home/max/University/DigitalControl/Curosity/git/buck-boost/slave.X/transient_load.h</file>
+            <file>file:/home/max/University/DigitalControl/Curosity/git/buck-boost/slave.X/pwm.h</file>
+            <file>file:/home/max/University/DigitalControl/Curosity/git/buck-boost/slave.X/system.h</file>
+            <file>file:/home/max/University/DigitalControl/Curosity/git/buck-boost/slave.X/timer_1ms.h</file>
+            <file>file:/home/max/University/DigitalControl/Curosity/git/buck-boost/slave.X/pdm_dac.h</file>
+            <file>file:/home/max/University/DigitalControl/Curosity/git/buck-boost/slave.X/adc.h</file>
+            <file>file:/home/max/University/DigitalControl/Curosity/git/buck-boost/slave.X/init_alt_w_registers.S</file>
+            <file>file:/home/max/University/DigitalControl/Curosity/git/buck-boost/slave.X/smps_2p2z_dspic_v2.s</file>
         </group>
     </open-files>
 </project-private>
