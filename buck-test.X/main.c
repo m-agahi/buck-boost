@@ -59,19 +59,25 @@ int main(void)
 {
     // initialize the device
     SYSTEM_Initialize();
-    int period = 500;
-    int tonpercent = 10;
-    int ton;
-    int toff;
-    ton = period*tonpercent/100;
-    toff= period - ton;
+    double const microsecond = 1000000;
+    float efficiency=0.9;
+
+    float vin=5.0;
+    float vout=1.0;
+    double frequency = 200;
+
+    float period = (1/frequency)*microsecond;
+    float DutyCycle = vout/(vin*efficiency) ;
+    float ton = period*DutyCycle;;
+    float toff = period - ton;
+
     IO_RC15_SetLow();
     while (1)
     {
         IO_RC14_SetHigh();
-        __delay_us(ton);
-        IO_RC14_SetLow();
         __delay_us(toff);
+        IO_RC14_SetLow();
+        __delay_us(ton);
     }
     return 1; 
 }
