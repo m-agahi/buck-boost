@@ -15,3 +15,5 @@
 /buck-test.X/build/
 /boost-test.X/build/
 /boost-test.X/dist/
+/buck-test-2.X/build/
+/buck-test-2.X/dist/

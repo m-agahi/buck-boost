@@ -18,7 +18,7 @@
     The generated drivers are tested against the following:
         Compiler          :  XC16 v1.61
         MPLAB 	          :  MPLAB X v5.45
-*/
+ */
 
 /*
     (c) 2020 Microchip Technology Inc. and its subsidiaries. You may use this
@@ -40,17 +40,17 @@
 
     MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE
     TERMS.
-*/
+ */
 
 /**
   Section: Included Files
-*/
+ */
 #include "mcc_generated_files/system.h"
 #include "mcc_generated_files/pin_manager.h"
 
-#define    FCY    16000000UL    // Instruction cycle frequency, Hz - required for __delayXXX() to work
+//#define    FCY    16000000UL    // Instruction cycle frequency, Hz - required for __delayXXX() to work
+#define    FCY    8000000UL    // Instruction cycle frequency, Hz - required for __delayXXX() to work
 #include <libpic30.h>        // __delayXXX() functions macros defined here
-
 
 /*
                          Main application
@@ -59,29 +59,41 @@ int main(void)
 {
     // initialize the device
     SYSTEM_Initialize();
-    double const microsecond = 1000000;
-    float efficiency=0.9;
+    float const microsecond = 1000000.0f;
+    float frequency;
+    float efficiency;
+    float period;
+    float vout;
+    float vin;
+    float DutyCycle;
+    float ton;
+    float toff;
 
-    float vin=5.0;
-    float vout=1.0;
-    double frequency = 200;
-
-    float period = (1/frequency)*microsecond;
-    float DutyCycle = vout/(vin*efficiency) ;
-    float ton = period*DutyCycle;;
-    float toff = period - ton;
+    vin = 5.0f;
+    vout = 2.0f;
+    frequency = 100000.0f;
+    efficiency = 1.0f;
+    period = (1 / frequency) * microsecond;
+    DutyCycle = vout / (vin * efficiency);
+    ton = period*DutyCycle;
+    toff = period - ton;
 
     IO_RC15_SetLow();
     while (1)
     {
-        IO_RC14_SetHigh();
-        __delay_us(toff);
-        IO_RC14_SetLow();
-        __delay_us(ton);
+        //IO_RC14_SetHigh();
+        
+        //__delay_us(toff);
+        //IO_RC14_SetLow();
+        //__delay_us(ton);
+        
+        
+        _RC14=1;
+        _RC14=0;
     }
-    return 1; 
+    return 0;
 }
 /**
  End of File
-*/
+ */
 
