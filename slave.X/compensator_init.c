@@ -11,11 +11,11 @@
 #define BUCK_PWM_PERIOD (uint16_t)(PWM_INPUT_FREQ/BUCK_SWITCHING_FREQ)
 
 //PWM Gen I/O Control
-#define BUCK_PWM_MODE 1       //0-Comp, 1-Independent, 2-Push/Pull
-#define BUCK_PWM_H_EN 1       // 0-Dis, 1-EN
-#define BUCK_PWM_L_EN 0       
-#define BUCK_PWM_H_INV 1      // 0-Active High, 1-Active Low
-#define BUCK_PWM_L_INV 0
+#define BUCK_PWM_MODE 1 //1      //0-Comp, 1-Independent, 2-Push/Pull
+#define BUCK_PWM_H_EN 1 //1      // 0-Dis, 1-EN
+#define BUCK_PWM_L_EN 0 //0      
+#define BUCK_PWM_H_INV 1  //1     // 0-Active High, 1-Active Low
+#define BUCK_PWM_L_INV 0 //0
 
 #define BUCK_WRITE_IOCONTROL ((BUCK_PWM_MODE<<4) | (BUCK_PWM_H_EN << 3) | (BUCK_PWM_L_EN << 2) | (BUCK_PWM_H_INV << 1) | (BUCK_PWM_L_INV))
 
@@ -53,7 +53,7 @@ void INIT_BuckDrive(void)
     //Init the slope compensation DAC
     PDMDAC_Init(1, 0, true, true);  
     PDMDAC_InitTrigger(1, 7, 1, 7);
-    PDMDAC_InitDACandCMPWithSlope(1, PWM_INPUT_FREQ, 3.3, 0, -0.27272727, 100000, false, 0);
+    PDMDAC_InitDACandCMPWithSlope(1, PWM_INPUT_FREQ, 3.3, 0, -0.1, 100000, false, 0);
      
     //Init PWM for buck converter
     PWM_InitTimeBase(BUCK_PWM_INSTANCE, BUCK_PWM_PERIOD, (.95*32767), 0x0, 0x0, 0x0);

@@ -36,7 +36,7 @@
 #include "adc.h"
 
 // Output Voltage Setpoint        
-#define BUCKVOLTAGEREFERENCE   3.3   // Buck output voltage in volts (max 3.8V with on-board load)        
+#define BUCKVOLTAGEREFERENCE   2.0   // Buck output voltage in volts (max 3.8V with on-board load)        
 
 #define ADCRESOLUTION  1241      // 4096/3.3V
 

@@ -17,3 +17,15 @@
 /boost-test.X/dist/
 /buck-test-2.X/build/
 /buck-test-2.X/dist/
+/boost-test-slave-1.X/build/
+/boost-test-slave-1.X/dist/
+/boost-test-master-1.X/build/
+/boost-test-master-1.X/dist/
+/buck-test-3/slave.X/build/
+/buck-test-3/master.X/build/
+/pwm-test-2.X/build/
+/pwm-test-2.X/dist/
+/pwm-test-3.X/build/
+/pwm-test-3.X/dist/
+/pwm-test-4.X/build/
+/pwm-test-4.X/dist/

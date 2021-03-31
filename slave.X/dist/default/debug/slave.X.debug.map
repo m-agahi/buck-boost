@@ -4,13 +4,13 @@ Tool Name:
   /opt/microchip/xc16/v1.61/bin/bin/../bin/elf-ld
 
 Command:
-  -T/tmp/tmp0000374d.00 \
-  -T/tmp/tmp0000374d.01 \
-  -T/tmp/tmp0000374d.02 \
-  -T/tmp/tmp0000374d.03 \
-  -T/tmp/tmp0000374d.04 \
-  -T/tmp/tmp0000374d.05 \
-  -T/tmp/tmp0000374d.06 \
+  -T/tmp/tmp000013e1.00 \
+  -T/tmp/tmp000013e1.01 \
+  -T/tmp/tmp000013e1.02 \
+  -T/tmp/tmp000013e1.03 \
+  -T/tmp/tmp000013e1.04 \
+  -T/tmp/tmp000013e1.05 \
+  -T/tmp/tmp000013e1.06 \
   -p33CH512MP508S1 \
   --mdfp=/home/max/.mchp_packs/Microchip/dsPIC33CH-MP_DFP/1.5.179/xc16 \
   -o \
