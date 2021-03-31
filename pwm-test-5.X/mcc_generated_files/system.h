@@ -131,7 +131,7 @@ inline static uint32_t SYSTEM_DeviceIdRegisterAddressGet(void)
  * @Example
     SYSTEM_Initialize(void);
  */
-void SYSTEM_Initialize(int i);
+void SYSTEM_Initialize(void);
 #endif	/* SYSTEM_H */
 /**
  End of File

@@ -136,8 +136,8 @@ typedef enum
 
     </code>
 */
-void PWM_Initialize (int i);
-
+void PWM_Initialize (void);
+void PWM_Initialize_2 (int e);
 /**
   @Summary
     Enables the specific PWM generator.

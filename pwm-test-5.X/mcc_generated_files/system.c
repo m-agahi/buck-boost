@@ -63,7 +63,7 @@
 
 // FOSC
 #pragma config POSCMD = NONE    //Primary Oscillator Mode Select bits->Primary Oscillator disabled
-#pragma config OSCIOFNC = ON    //OSC2 Pin Function bit->OSC2 is general purpose digital I/O pin
+#pragma config OSCIOFNC = OFF    //OSC2 Pin Function bit->OSC2 is clock output
 #pragma config FCKSM = CSDCMD    //Clock Switching Mode bits->Both Clock switching and Fail-safe Clock Monitor are disabled
 #pragma config PLLKEN = PLLKEN_ON    //PLL Lock Status Control->PLL lock signal will be used to disable PLL clock output if lock is lost
 #pragma config XTCFG = G3    //XT Config->24-32 MHz crystals
@@ -202,18 +202,16 @@
 #include "clock.h"
 #include "system.h"
 #include "system_types.h"
-#include "pwm.h"
 #include "interrupt_manager.h"
 #include "traps.h"
+#include "pwm.h"
 
-
-void SYSTEM_Initialize(int i)
+void SYSTEM_Initialize(void)
 {
-    
     PIN_MANAGER_Initialize();
     INTERRUPT_Initialize();
     CLOCK_Initialize();
-    PWM_Initialize(i);
+    PWM_Initialize();
     INTERRUPT_GlobalEnable();
     SYSTEM_CORCONModeOperatingSet(CORCON_MODE_PORVALUES);
 }

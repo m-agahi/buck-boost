@@ -47,7 +47,7 @@
 */
 #include "mcc_generated_files/system.h"
 
-#define    FCY    16000000UL    // Instruction cycle frequency, Hz - required for __delayXXX() to work
+#define    FCY    8000000UL    // Instruction cycle frequency, Hz - required for __delayXXX() to work
 #include <libpic30.h>        // __delayXXX() functions macros defined here
 
 /*
@@ -55,13 +55,21 @@
  */
 int main(void)
 {
+    int i=4000;
     // initialize the device
-    SYSTEM_Initialize();
+    SYSTEM_Initialize(i);
+    _LATE0=1;
     while (1)
     {
+        
         // Add your application code
-        PG4PER+=10;
-        __delay_ms(500);
+        i=i+500;
+        SYSTEM_Initialize(i);
+        _LATE0=1;
+        __delay_ms(400);
+        _LATE0=0;
+        __delay_ms(400);
+
     }
     return 1; 
 }
