@@ -1,23 +1,23 @@
 /**
-  Generated main.c file from MPLAB Code Configurator
+  @Generated PIC24 / dsPIC33 / PIC32MM MCUs Source File
 
-  @Company
+  @Company:
     Microchip Technology Inc.
 
-  @File Name
-    main.c
+  @File Name:
+    clock.h
 
-  @Summary
-    This is the generated main.c using PIC24 / dsPIC33 / PIC32MM MCUs.
+  @Summary:
+    This is the clock.h file generated using PIC24 / dsPIC33 / PIC32MM MCUs
 
-  @Description
-    This source file provides main entry point for system initialization and application code development.
+  @Description:
+    This header file provides implementations for driver APIs for all modules selected in the GUI.
     Generation Information :
         Product Revision  :  PIC24 / dsPIC33 / PIC32MM MCUs - 1.170.0
         Device            :  dsPIC33CH512MP508
     The generated drivers are tested against the following:
         Compiler          :  XC16 v1.61
-        MPLAB 	          :  MPLAB X v5.45
+        MPLAB             :  MPLAB X v5.45
 */
 
 /*
@@ -42,46 +42,59 @@
     TERMS.
 */
 
+#ifndef CLOCK_H
+#define	CLOCK_H
+
 /**
   Section: Included Files
 */
-#include "mcc_generated_files/system.h"
-#include "mcc_generated_files/adc1.h"
 
+#include <stdbool.h>
 
-#define    FCY    8000000UL    // Instruction cycle frequency, Hz - required for __delayXXX() to work
-#include <libpic30.h>        // __delayXXX() functions macros defined here
+#ifndef _XTAL_FREQ
+#define _XTAL_FREQ  8000000UL
+#endif
 
-/*
-                         Main application
+#define CLOCK_SystemFrequencyGet()        (8000000UL)
+
+#define CLOCK_PeripheralFrequencyGet()    (CLOCK_SystemFrequencyGet() / 2)
+
+#define CLOCK_InstructionFrequencyGet()   (CLOCK_SystemFrequencyGet() / 2)
+/**
+ * @Param
+    none
+ * @Returns
+    none
+ * @Description
+    Initializes the oscillator to the default states configured in the
+ *                  MCC GUI
+ * @Example
+    CLOCK_Initialize(void);
  */
-int main(void)
-{
-    // initialize the device
-    int e;
-    SYSTEM_Initialize();
-    ADC1_Enable();
-    ADC1_ChannelSelect(channel_AN0);
-    while (1)
-    {
-        // Add your application code
-        if (ADC1_IsConversionComplete(channel_AN0))
-        {
-            e=ADC1_ConversionResultGet( channel_AN0 );
-        }
-        
-        _LATE0=1;
-        __delay_ms(e+200);
-        _LATE0=0;
-        __delay_ms(e+200);
-        //PWM_Initialize_2(e+1000);
-     
-                
-                
-    }
-    return 1; 
-}
+void CLOCK_Initialize(void);
+
+/**
+  @Summary
+    This API tells whether Auxiliary PLL is locked or not.
+
+  @Description
+    This routine returns true if Auxiliary PLL is locked else returns false.
+
+  @Param
+    None.
+
+  @Returns
+    Returns true if Auxiliary PLL is locked else returns false.
+ 
+  @Example 
+    <code>
+    bool lockStatus;
+    lockStatus = CLOCK_AuxPllLockStatusGet();
+    </code>
+*/
+bool CLOCK_AuxPllLockStatusGet();
+
+#endif	/* CLOCK_H */
 /**
  End of File
 */
-

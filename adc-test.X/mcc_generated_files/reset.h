@@ -1,23 +1,23 @@
 /**
-  Generated main.c file from MPLAB Code Configurator
+  RESET Generated Driver File
 
   @Company
     Microchip Technology Inc.
 
   @File Name
-    main.c
+    reset.c
 
   @Summary
-    This is the generated main.c using PIC24 / dsPIC33 / PIC32MM MCUs.
+    This is the generated driver implementation file for the RESET driver using PIC24 / dsPIC33 / PIC32MM MCUs
 
   @Description
-    This source file provides main entry point for system initialization and application code development.
+    This header file provides implementations for driver APIs for RESET.
     Generation Information :
         Product Revision  :  PIC24 / dsPIC33 / PIC32MM MCUs - 1.170.0
         Device            :  dsPIC33CH512MP508
     The generated drivers are tested against the following:
         Compiler          :  XC16 v1.61
-        MPLAB 	          :  MPLAB X v5.45
+        MPLAB             :  MPLAB X v5.45
 */
 
 /*
@@ -42,46 +42,43 @@
     TERMS.
 */
 
+#ifndef RESET_H
+#define	RESET_H
+
+#include <stdint.h>
+#include "reset_types.h"
+
 /**
-  Section: Included Files
+* Checks reset cause, flashes UI with an error code as a result.
+* 
+* Note: this function should be called before any use of CLRWDT
+* since it has a side-effect of clearing the appropriate bits in the
+* register showing reset cause (see DS70602B page 8-10)
 */
-#include "mcc_generated_files/system.h"
-#include "mcc_generated_files/adc1.h"
+uint16_t RESET_GetCause(void);
 
-
-#define    FCY    8000000UL    // Instruction cycle frequency, Hz - required for __delayXXX() to work
-#include <libpic30.h>        // __delayXXX() functions macros defined here
-
-/*
-                         Main application
+/**
+ * It handles the reset cause by clearing the cause register values.
+ * Its a weak function user can override this function.
+ * @return None
+ * @example
+ * <code>
+ * RESET_CauseHandler();
+ * </code>
  */
-int main(void)
-{
-    // initialize the device
-    int e;
-    SYSTEM_Initialize();
-    ADC1_Enable();
-    ADC1_ChannelSelect(channel_AN0);
-    while (1)
-    {
-        // Add your application code
-        if (ADC1_IsConversionComplete(channel_AN0))
-        {
-            e=ADC1_ConversionResultGet( channel_AN0 );
-        }
-        
-        _LATE0=1;
-        __delay_ms(e+200);
-        _LATE0=0;
-        __delay_ms(e+200);
-        //PWM_Initialize_2(e+1000);
-     
-                
-                
-    }
-    return 1; 
-}
+void RESET_CauseHandler(void);
+
+/**
+ * This function resets the reset cause register.
+ * @return None
+ * @example
+ * <code>
+ * RESET_CauseClearAll();
+ * </code>
+ */
+void RESET_CauseClearAll();
+
+#endif	/* RESET_H */
 /**
  End of File
 */
-

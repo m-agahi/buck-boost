@@ -72,12 +72,12 @@ void ADC1_Initialize (void)
     ADCON1H = 0x60;
     // PTGEN disabled; SHRADCS 2; REFCIE disabled; SHREISEL Early interrupt is generated 1 TADCORE clock prior to data being ready; REFERCIE disabled; EIEN disabled; 
     ADCON2L = 0x00;
-    // SHRSAMC 0; 
-    ADCON2H = 0x00;
+    // SHRSAMC 2; 
+    ADCON2H = 0x02;
     // SWCTRG disabled; SHRSAMP disabled; SUSPEND disabled; SWLCTRG disabled; SUSPCIE disabled; CNVCHSEL AN0; REFSEL disabled; 
     ADCON3L = 0x00;
-    // SHREN enabled; CLKDIV 1; CLKSEL FOSC/2; 
-    ADCON3H = (0x80 & 0xFF00); //Disabling C0EN, C1EN, C2EN, C3EN and SHREN bits
+    // SHREN enabled; CLKDIV 1; CLKSEL FOSC; 
+    ADCON3H = (0x4080 & 0xFF00); //Disabling C0EN, C1EN, C2EN, C3EN and SHREN bits
     // SIGN0 disabled; SIGN4 disabled; SIGN3 disabled; SIGN2 disabled; SIGN1 disabled; SIGN7 disabled; SIGN6 disabled; SIGN5 disabled; 
     ADMOD0L = 0x00;
     // SIGN10 disabled; SIGN11 disabled; SIGN12 disabled; SIGN13 disabled; SIGN8 disabled; SIGN14 disabled; SIGN15 disabled; SIGN9 disabled; 

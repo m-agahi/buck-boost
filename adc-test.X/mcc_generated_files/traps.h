@@ -1,25 +1,25 @@
 /**
-  Generated main.c file from MPLAB Code Configurator
+  System Traps Generated Driver File 
 
-  @Company
+  @Company:
     Microchip Technology Inc.
 
-  @File Name
-    main.c
+  @File Name:
+    traps.h
 
-  @Summary
-    This is the generated main.c using PIC24 / dsPIC33 / PIC32MM MCUs.
+  @Summary:
+    This is the generated driver implementation file for handling traps
+    using PIC24 / dsPIC33 / PIC32MM MCUs
 
-  @Description
-    This source file provides main entry point for system initialization and application code development.
-    Generation Information :
+  @Description:
+    This source file provides implementations for PIC24 / dsPIC33 / PIC32MM MCUs traps.
+    Generation Information : 
         Product Revision  :  PIC24 / dsPIC33 / PIC32MM MCUs - 1.170.0
         Device            :  dsPIC33CH512MP508
     The generated drivers are tested against the following:
         Compiler          :  XC16 v1.61
-        MPLAB 	          :  MPLAB X v5.45
+        MPLAB             :  MPLAB X v5.45
 */
-
 /*
     (c) 2020 Microchip Technology Inc. and its subsidiaries. You may use this
     software and any derivatives exclusively with Microchip products.
@@ -42,46 +42,49 @@
     TERMS.
 */
 
+#ifndef _TRAPS_H
+#define _TRAPS_H
+
+#include <stdint.h>
+
 /**
-  Section: Included Files
-*/
-#include "mcc_generated_files/system.h"
-#include "mcc_generated_files/adc1.h"
-
-
-#define    FCY    8000000UL    // Instruction cycle frequency, Hz - required for __delayXXX() to work
-#include <libpic30.h>        // __delayXXX() functions macros defined here
-
-/*
-                         Main application
+ * Error codes
  */
-int main(void)
+typedef enum 
 {
-    // initialize the device
-    int e;
-    SYSTEM_Initialize();
-    ADC1_Enable();
-    ADC1_ChannelSelect(channel_AN0);
-    while (1)
-    {
-        // Add your application code
-        if (ADC1_IsConversionComplete(channel_AN0))
-        {
-            e=ADC1_ConversionResultGet( channel_AN0 );
-        }
-        
-        _LATE0=1;
-        __delay_ms(e+200);
-        _LATE0=0;
-        __delay_ms(e+200);
-        //PWM_Initialize_2(e+1000);
-     
-                
-                
-    }
-    return 1; 
-}
+    /* ----- Traps ----- */
+    TRAPS_OSC_FAIL = 0, /** Oscillator Fail Trap vector */
+    TRAPS_STACK_ERR = 1, /** Stack Error Trap Vector */
+    TRAPS_ADDRESS_ERR = 2, /** Address error Trap vector */
+    TRAPS_MATH_ERR = 3, /** Math Error Trap vector */
+    TRAPS_HARD_ERR = 7, /** Generic Hard Trap vector */
+    TRAPS_NVM_ERR = 12, /** Generic Soft Trap vector */
+    TRAPS_DAE_ERR = 9, /** Generic Soft Trap vector */
+    TRAPS_DOOVR_ERR = 10, /** Generic Soft Trap vector */
+    TRAPS_APLL_ERR = 11, /** Generic Soft Trap vector */
+} TRAPS_ERROR_CODE;
 /**
- End of File
-*/
+  @Summary
+    Default handler for the traps
 
+  @Description
+    This routine will be called whenever a trap happens. It stores the trap
+    error code and waits forever.
+    This routine has a weak attribute and can be over written.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    None.
+
+*/
+void TRAPS_halt_on_error(uint16_t code);
+
+#endif

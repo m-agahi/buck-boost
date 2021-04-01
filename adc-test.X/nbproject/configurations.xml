@@ -17,6 +17,22 @@
         <itemPath>sccp.h</itemPath>
         <itemPath>uart1.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="MCC Generated Files"
+                     displayName="MCC Generated Files"
+                     projectFiles="true">
+        <itemPath>mcc_generated_files/clock.h</itemPath>
+        <itemPath>mcc_generated_files/mcc.h</itemPath>
+        <itemPath>mcc_generated_files/reset_types.h</itemPath>
+        <itemPath>mcc_generated_files/pin_manager.h</itemPath>
+        <itemPath>mcc_generated_files/pwm_module_features.h</itemPath>
+        <itemPath>mcc_generated_files/traps.h</itemPath>
+        <itemPath>mcc_generated_files/reset.h</itemPath>
+        <itemPath>mcc_generated_files/pwm.h</itemPath>
+        <itemPath>mcc_generated_files/system_types.h</itemPath>
+        <itemPath>mcc_generated_files/watchdog.h</itemPath>
+        <itemPath>mcc_generated_files/system.h</itemPath>
+        <itemPath>mcc_generated_files/interrupt_manager.h</itemPath>
+      </logicalFolder>
       <itemPath>debounce.h</itemPath>
       <itemPath>msi.h</itemPath>
     </logicalFolder>
@@ -38,6 +54,18 @@
         <itemPath>uart1.c</itemPath>
         <itemPath>uart_printf.c</itemPath>
       </logicalFolder>
+      <logicalFolder name="MCC Generated Files"
+                     displayName="MCC Generated Files"
+                     projectFiles="true">
+        <itemPath>mcc_generated_files/pwm.c</itemPath>
+        <itemPath>mcc_generated_files/mcc.c</itemPath>
+        <itemPath>mcc_generated_files/clock.c</itemPath>
+        <itemPath>mcc_generated_files/traps.c</itemPath>
+        <itemPath>mcc_generated_files/system.c</itemPath>
+        <itemPath>mcc_generated_files/interrupt_manager.c</itemPath>
+        <itemPath>mcc_generated_files/pin_manager.c</itemPath>
+        <itemPath>mcc_generated_files/reset.c</itemPath>
+      </logicalFolder>
       <itemPath>main.c</itemPath>
       <itemPath>debounce.c</itemPath>
       <itemPath>msi.c</itemPath>
@@ -46,6 +74,7 @@
                    displayName="Important Files"
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
+      <itemPath>MyConfig.mc3</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
@@ -319,6 +348,7 @@
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="memories.configurationmemory" value="true"/>
         <property key="memories.dataflash" value="true"/>
         <property key="memories.eeprom" value="true"/>
