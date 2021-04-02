@@ -1,142 +1,3 @@
-#ifndef ADC_H
-#define ADC_H
-
-#include <stdint.h>
-#include <stdbool.h>
-
-/*** ADC Channel Definitions *****************************************/
-#define ADC_CHANNEL_POTENTIOMETER ADC_CHANNEL_0
-
-typedef enum
-{
-    ADC_CHANNEL_0 = 0
-} ADC_CHANNEL;
-
-typedef enum
-{
-    ADC_CONFIGURATION_DEFAULT
-} ADC_CONFIGURATION;
-
-/*********************************************************************
-* Function: ADC_ReadPercentage(ADC_CHANNEL channel);
-*
-* Overview: Reads the requested ADC channel and returns the percentage
-*            of that conversions result (0-100%).
-*
-* PreCondition: channel is enabled via ADC_ChannelEnable()
-*
-* Input: ADC_CHANNEL channel - enumeration of the ADC channels
-*        available in this demo.  They should be meaningful names and
-*        not the names of the ADC pins on the device (as the demo code
-*        may be ported to other boards).
-*         i.e. ADC_ReadPercentage(ADC_CHANNEL_POTENTIOMETER);
-*
-* Output: uint8_t indicating the percentage of the result 0-100% or
-*         0xFF for an error
-*
-********************************************************************/
-uint8_t ADC_ReadPercentage(ADC_CHANNEL channel);
-
-
-/*********************************************************************
-* Function: ADC_Read10bit(ADC_CHANNEL channel);
-*
-* Overview: Reads the requested ADC channel and returns the 10-bit
-*           representation of this data.
-*
-* PreCondition: channel is enabled via ADC_ChannelEnable()
-*
-* Input: ADC_CHANNEL channel - enumeration of the ADC channels
-*        available in this demo.  They should be meaningful names and
-*        not the names of the ADC pins on the device (as the demo code
-*        may be ported to other boards).
-*         i.e. - ADCReadPercentage(ADC_CHANNEL_POTENTIOMETER);
-*
-* Output: uint16_t the right adjusted 10-bit representation of the ADC
-*         channel conversion or 0xFFFF for an error.
-*
-********************************************************************/
-uint16_t ADC_Read10bit(ADC_CHANNEL channel);
-
-
-
-/*********************************************************************
-* Function: ADC_Read12bit(ADC_CHANNEL channel);
-*
-* Overview: Reads the requested ADC channel and returns the 12-bit
-*           representation of this data.
-*
-* PreCondition: channel is configured via the ADCConfigure() function
-*
-* Input: ADC_CHANNEL channel - enumeration of the ADC channels
-*        available in this demo.  They should be meaningful names and
-*        not the names of the ADC pins on the device (as the demo code
-*        may be ported to other boards).
-*         i.e. - ADCReadPercentage(ADC_CHANNEL_POTENTIOMETER);
-*
-* Output: uint16_t - The 12-bit ADC channel conversion value, or 0xFFFF for an 
- *                   error.
-*
-********************************************************************/
-uint16_t ADC_Read12bit(ADC_CHANNEL channel);
-
-
-
-/*********************************************************************
-* Function: uint16_t ADC_Read12bitAverage(ADC_CHANNEL channel, uint16_t numberOfSamplesInAverage)
-*
-* Overview: Repeatedly reads the requested ADC channel and returns a 12-bit
-*           representation of the average value returned by the ADC over the
-*           sample set.
-*
-* PreCondition: channel is configured via the ADCConfigure() function
-*
-* Input: ADC_CHANNEL channel - enumeration of the ADC channels
-*        available in this demo.  They should be meaningful names and
-*        not the names of the ADC pins on the device (as the demo code
-*        may be ported to other boards).
-*         i.e. - ADCReadPercentage(ADC_CHANNEL_POTENTIOMETER);
-*        uint16_t numberOfSamplesInAverage - the number of samples to take when
-*                 computing the average result.  The more the samples, the better
-*                 the result quality, but the longer the operation will take.
-*
-* Output: uint16_t - The 12-bit average ADC channel conversion result value
-*
-********************************************************************/
-uint16_t ADC_Read12bitAverage(ADC_CHANNEL channel, uint16_t numberOfSamplesInAverage);
-
-
-/*********************************************************************
-* Function: bool ADC_ChannelEnable(ADC_CHANNEL channel, ADC_CONFIGURATION configuration);
-*
-* Overview: Enables specified channel
-*
-* PreCondition: none
-*
-* Input: ADC_CHANNEL channel - the channel to enable
-*
-* Output: bool - true if successfully configured.  false otherwise.
-*
-********************************************************************/
-bool ADC_ChannelEnable(ADC_CHANNEL channel);
-
-/*********************************************************************
-* Function: bool ADC_SetConfiguration(ADC_CONFIGURATION configuration)
-*
-* Overview: Configures the ADC module to specified setting
-*
-* PreCondition: none
-*
-* Input: ADC_CONFIGURATION configuration - the mode in which to run the ADC
-*
-* Output: bool - true if successfully configured.  false otherwise.
-*
-********************************************************************/
-bool ADC_SetConfiguration(ADC_CONFIGURATION configuration);
-
-#endif  //ADC_H
-
-
 /**
   ADC1 Generated Driver File
 
@@ -211,12 +72,12 @@ void ADC1_Initialize (void)
     ADCON1H = 0x60;
     // PTGEN disabled; SHRADCS 2; REFCIE disabled; SHREISEL Early interrupt is generated 1 TADCORE clock prior to data being ready; REFERCIE disabled; EIEN disabled; 
     ADCON2L = 0x00;
-    // SHRSAMC 2; 
-    ADCON2H = 0x02;
+    // SHRSAMC 0; 
+    ADCON2H = 0x00;
     // SWCTRG disabled; SHRSAMP disabled; SUSPEND disabled; SWLCTRG disabled; SUSPCIE disabled; CNVCHSEL AN0; REFSEL disabled; 
     ADCON3L = 0x00;
-    // SHREN enabled; CLKDIV 1; CLKSEL FOSC; 
-    ADCON3H = (0x4080 & 0xFF00); //Disabling C0EN, C1EN, C2EN, C3EN and SHREN bits
+    // SHREN enabled; CLKDIV 1; CLKSEL FOSC/2; 
+    ADCON3H = (0x80 & 0xFF00); //Disabling C0EN, C1EN, C2EN, C3EN and SHREN bits
     // SIGN0 disabled; SIGN4 disabled; SIGN3 disabled; SIGN2 disabled; SIGN1 disabled; SIGN7 disabled; SIGN6 disabled; SIGN5 disabled; 
     ADMOD0L = 0x00;
     // SIGN10 disabled; SIGN11 disabled; SIGN12 disabled; SIGN13 disabled; SIGN8 disabled; SIGN14 disabled; SIGN15 disabled; SIGN9 disabled; 
@@ -295,10 +156,6 @@ void ADC1_Initialize (void)
     ADC1_Setchannel_AN19InterruptHandler(&ADC1_channel_AN19_CallBack);
     ADC1_Setchannel_AN20InterruptHandler(&ADC1_channel_AN20_CallBack);
     
-    // Clearing ADC1 interrupt.
-    IFS5bits.ADCIF = 0;
-    // Enabling ADC1 interrupt.
-    IEC5bits.ADCIE = 1;
     // Clearing channel_AN16 interrupt flag.
     IFS6bits.ADCAN16IF = 0;
     // Enabling channel_AN16 interrupt.
@@ -369,15 +226,18 @@ void ADC1_SetCommonInterruptHandler(void* handler)
     ADC1_CommonDefaultInterruptHandler = handler;
 }
 
-void __attribute__ ( ( __interrupt__ , auto_psv, weak ) ) _ADCInterrupt ( void )
+void __attribute__ ((weak)) ADC1_Tasks ( void )
 {
-    if(ADC1_CommonDefaultInterruptHandler) 
-    { 
-        ADC1_CommonDefaultInterruptHandler(); 
-    }
+    if(IFS5bits.ADCIF)
+    {
+        if(ADC1_CommonDefaultInterruptHandler) 
+        { 
+            ADC1_CommonDefaultInterruptHandler(); 
+        }
 
-    // clear the ADC1 interrupt flag
-    IFS5bits.ADCIF = 0;
+        // clear the ADC1 interrupt flag
+        IFS5bits.ADCIF = 0;
+    }
 }
 
 void __attribute__ ((weak)) ADC1_channel_AN0_CallBack( uint16_t adcVal )

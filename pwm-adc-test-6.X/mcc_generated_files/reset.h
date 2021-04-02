@@ -1,17 +1,17 @@
 /**
-  @Generated PIC24 / dsPIC33 / PIC32MM MCUs Header File
+  RESET Generated Driver File
 
-  @Company:
+  @Company
     Microchip Technology Inc.
 
-  @File Name:
-    mcc.h
+  @File Name
+    reset.c
 
-  @Summary:
-    This is the mcc.h file generated using PIC24 / dsPIC33 / PIC32MM MCUs
+  @Summary
+    This is the generated driver implementation file for the RESET driver using PIC24 / dsPIC33 / PIC32MM MCUs
 
-  @Description:
-    This file will be removed in future MCC releases. Use system.h instead.
+  @Description
+    This header file provides implementations for driver APIs for RESET.
     Generation Information :
         Product Revision  :  PIC24 / dsPIC33 / PIC32MM MCUs - 1.170.0
         Device            :  dsPIC33CH512MP508
@@ -42,27 +42,43 @@
     TERMS.
 */
 
-#ifndef MCC_H
-#define	MCC_H
-#include <xc.h>
-#include "system.h"
-#include "clock.h"
-#include "pin_manager.h"
+#ifndef RESET_H
+#define	RESET_H
+
 #include <stdint.h>
-#include <stdbool.h>
-#include "system_types.h"
-#include "reset.h"
+#include "reset_types.h"
 
-#include "pwm.h"
-#include "reset.h"
-#include "interrupt_manager.h"
-#include "traps.h"
-#include "watchdog.h"
-#include "adc1.h"
+/**
+* Checks reset cause, flashes UI with an error code as a result.
+* 
+* Note: this function should be called before any use of CLRWDT
+* since it has a side-effect of clearing the appropriate bits in the
+* register showing reset cause (see DS70602B page 8-10)
+*/
+uint16_t RESET_GetCause(void);
 
-#warning "This file will be removed in future MCC releases. Use system.h instead."
+/**
+ * It handles the reset cause by clearing the cause register values.
+ * Its a weak function user can override this function.
+ * @return None
+ * @example
+ * <code>
+ * RESET_CauseHandler();
+ * </code>
+ */
+void RESET_CauseHandler(void);
 
-#endif	/* MCC_H */
+/**
+ * This function resets the reset cause register.
+ * @return None
+ * @example
+ * <code>
+ * RESET_CauseClearAll();
+ * </code>
+ */
+void RESET_CauseClearAll();
+
+#endif	/* RESET_H */
 /**
  End of File
 */

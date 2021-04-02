@@ -492,6 +492,444 @@
 
 */
 #define IO_RE1_SetDigitalOutput() (_TRISE1 = 0)
+/**
+  @Summary
+    Sets the GPIO pin, RE7, high using LATE7.
+
+  @Description
+    Sets the GPIO pin, RE7, high using LATE7.
+
+  @Preconditions
+    The RE7 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RE7 high (1)
+    IO_RE7_SetHigh();
+    </code>
+
+*/
+#define IO_RE7_SetHigh()          (_LATE7 = 1)
+/**
+  @Summary
+    Sets the GPIO pin, RE7, low using LATE7.
+
+  @Description
+    Sets the GPIO pin, RE7, low using LATE7.
+
+  @Preconditions
+    The RE7 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RE7 low (0)
+    IO_RE7_SetLow();
+    </code>
+
+*/
+#define IO_RE7_SetLow()           (_LATE7 = 0)
+/**
+  @Summary
+    Toggles the GPIO pin, RE7, using LATE7.
+
+  @Description
+    Toggles the GPIO pin, RE7, using LATE7.
+
+  @Preconditions
+    The RE7 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Toggle RE7
+    IO_RE7_Toggle();
+    </code>
+
+*/
+#define IO_RE7_Toggle()           (_LATE7 ^= 1)
+/**
+  @Summary
+    Reads the value of the GPIO pin, RE7.
+
+  @Description
+    Reads the value of the GPIO pin, RE7.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    uint16_t portValue;
+
+    // Read RE7
+    postValue = IO_RE7_GetValue();
+    </code>
+
+*/
+#define IO_RE7_GetValue()         _RE7
+/**
+  @Summary
+    Configures the GPIO pin, RE7, as an input.
+
+  @Description
+    Configures the GPIO pin, RE7, as an input.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RE7 as an input
+    IO_RE7_SetDigitalInput();
+    </code>
+
+*/
+#define IO_RE7_SetDigitalInput()  (_TRISE7 = 1)
+/**
+  @Summary
+    Configures the GPIO pin, RE7, as an output.
+
+  @Description
+    Configures the GPIO pin, RE7, as an output.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RE7 as an output
+    IO_RE7_SetDigitalOutput();
+    </code>
+
+*/
+#define IO_RE7_SetDigitalOutput() (_TRISE7 = 0)
+/**
+  @Summary
+    Sets the GPIO pin, RE8, high using LATE8.
+
+  @Description
+    Sets the GPIO pin, RE8, high using LATE8.
+
+  @Preconditions
+    The RE8 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RE8 high (1)
+    IO_RE8_SetHigh();
+    </code>
+
+*/
+#define IO_RE8_SetHigh()          (_LATE8 = 1)
+/**
+  @Summary
+    Sets the GPIO pin, RE8, low using LATE8.
+
+  @Description
+    Sets the GPIO pin, RE8, low using LATE8.
+
+  @Preconditions
+    The RE8 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RE8 low (0)
+    IO_RE8_SetLow();
+    </code>
+
+*/
+#define IO_RE8_SetLow()           (_LATE8 = 0)
+/**
+  @Summary
+    Toggles the GPIO pin, RE8, using LATE8.
+
+  @Description
+    Toggles the GPIO pin, RE8, using LATE8.
+
+  @Preconditions
+    The RE8 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Toggle RE8
+    IO_RE8_Toggle();
+    </code>
+
+*/
+#define IO_RE8_Toggle()           (_LATE8 ^= 1)
+/**
+  @Summary
+    Reads the value of the GPIO pin, RE8.
+
+  @Description
+    Reads the value of the GPIO pin, RE8.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    uint16_t portValue;
+
+    // Read RE8
+    postValue = IO_RE8_GetValue();
+    </code>
+
+*/
+#define IO_RE8_GetValue()         _RE8
+/**
+  @Summary
+    Configures the GPIO pin, RE8, as an input.
+
+  @Description
+    Configures the GPIO pin, RE8, as an input.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RE8 as an input
+    IO_RE8_SetDigitalInput();
+    </code>
+
+*/
+#define IO_RE8_SetDigitalInput()  (_TRISE8 = 1)
+/**
+  @Summary
+    Configures the GPIO pin, RE8, as an output.
+
+  @Description
+    Configures the GPIO pin, RE8, as an output.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RE8 as an output
+    IO_RE8_SetDigitalOutput();
+    </code>
+
+*/
+#define IO_RE8_SetDigitalOutput() (_TRISE8 = 0)
+/**
+  @Summary
+    Sets the GPIO pin, RE9, high using LATE9.
+
+  @Description
+    Sets the GPIO pin, RE9, high using LATE9.
+
+  @Preconditions
+    The RE9 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RE9 high (1)
+    IO_RE9_SetHigh();
+    </code>
+
+*/
+#define IO_RE9_SetHigh()          (_LATE9 = 1)
+/**
+  @Summary
+    Sets the GPIO pin, RE9, low using LATE9.
+
+  @Description
+    Sets the GPIO pin, RE9, low using LATE9.
+
+  @Preconditions
+    The RE9 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RE9 low (0)
+    IO_RE9_SetLow();
+    </code>
+
+*/
+#define IO_RE9_SetLow()           (_LATE9 = 0)
+/**
+  @Summary
+    Toggles the GPIO pin, RE9, using LATE9.
+
+  @Description
+    Toggles the GPIO pin, RE9, using LATE9.
+
+  @Preconditions
+    The RE9 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Toggle RE9
+    IO_RE9_Toggle();
+    </code>
+
+*/
+#define IO_RE9_Toggle()           (_LATE9 ^= 1)
+/**
+  @Summary
+    Reads the value of the GPIO pin, RE9.
+
+  @Description
+    Reads the value of the GPIO pin, RE9.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    uint16_t portValue;
+
+    // Read RE9
+    postValue = IO_RE9_GetValue();
+    </code>
+
+*/
+#define IO_RE9_GetValue()         _RE9
+/**
+  @Summary
+    Configures the GPIO pin, RE9, as an input.
+
+  @Description
+    Configures the GPIO pin, RE9, as an input.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RE9 as an input
+    IO_RE9_SetDigitalInput();
+    </code>
+
+*/
+#define IO_RE9_SetDigitalInput()  (_TRISE9 = 1)
+/**
+  @Summary
+    Configures the GPIO pin, RE9, as an output.
+
+  @Description
+    Configures the GPIO pin, RE9, as an output.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RE9 as an output
+    IO_RE9_SetDigitalOutput();
+    </code>
+
+*/
+#define IO_RE9_SetDigitalOutput() (_TRISE9 = 0)
 
 /**
     Section: Function Prototypes
