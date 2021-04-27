@@ -80,6 +80,29 @@
           <alternateLoadableFile></alternateLoadableFile>
         </loading>
         <subordinates>
+          <sproject>
+            <makeArtifact PL="../boost-8/slave.X"
+                          CT="1"
+                          CN="default"
+                          AC="true"
+                          BL="true"
+                          WD="../boost-8/slave.X"
+                          BC="${MAKE}  -f Makefile CONF=default"
+                          DBC="${MAKE}  -f Makefile CONF=default TYPE_IMAGE=DEBUG_RUN"
+                          CC="rm -rf &quot;build/default&quot; &quot;dist/default&quot;"
+                          OP="dist/default/production/slave.X.production.hex"
+                          DOP="dist/default/debug/slave.X.debug.elf"
+                          FL="dist/default/production/slave.X.production.hex"
+                          PD="dist/default/production/slave.X.production.elf"
+                          DD="dist/default/debug/slave.X.debug.elf">
+            </makeArtifact>
+            <simage>slave</simage>
+            <saddress></saddress>
+          </sproject>
+          <score>
+            <scdebug>false</scdebug>
+            <scname>S1</scname>
+          </score>
         </subordinates>
       </compileType>
       <makeCustomizationType>
@@ -218,6 +241,31 @@
         <property key="relaxed-math" value="false"/>
         <property key="save-temps" value="false"/>
       </C30Global>
+      <PKOBSKDEPlatformTool>
+        <property key="AutoSelectMemRanges" value="auto"/>
+        <property key="SecureSegment.SegmentProgramming" value="FullChipProgramming"/>
+        <property key="ToolFirmwareFilePath"
+                  value="Press to browse for a specific firmware version"/>
+        <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
+        <property key="memories.configurationmemory" value="true"/>
+        <property key="memories.dataflash" value="true"/>
+        <property key="memories.eeprom" value="true"/>
+        <property key="memories.id" value="true"/>
+        <property key="memories.programmemory" value="true"/>
+        <property key="memories.programmemory.ranges" value="0-ffffffffffffffff"/>
+        <property key="memories.userotp" value="true"/>
+        <property key="programoptions.donoteraseauxmem" value="false"/>
+        <property key="programoptions.eraseb4program" value="true"/>
+        <property key="programoptions.preservedataflash" value="false"/>
+        <property key="programoptions.preservedataflash.ranges" value=""/>
+        <property key="programoptions.preserveeeprom" value="false"/>
+        <property key="programoptions.preserveeeprom.ranges"
+                  value="${memories.eedata.default}"/>
+        <property key="programoptions.preserveprogram.ranges" value=""/>
+        <property key="programoptions.preserveprogramrange" value="false"/>
+        <property key="programoptions.usehighvoltageonmclr" value="false"/>
+        <property key="programoptions.uselvpprogramming" value="true"/>
+      </PKOBSKDEPlatformTool>
     </conf>
   </confs>
 </configurationDescriptor>

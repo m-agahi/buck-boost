@@ -81,26 +81,26 @@
         </loading>
         <subordinates>
           <sproject>
-            <makeArtifact PL="../boost-7-slave.X"
+            <makeArtifact PL="../SLAV.X"
                           CT="1"
                           CN="default"
                           AC="true"
                           BL="true"
-                          WD="../boost-7-slave.X"
+                          WD="../SLAV.X"
                           BC="${MAKE}  -f Makefile CONF=default"
                           DBC="${MAKE}  -f Makefile CONF=default TYPE_IMAGE=DEBUG_RUN"
                           CC="rm -rf &quot;build/default&quot; &quot;dist/default&quot;"
-                          OP="dist/default/production/boost-7-slave.X.production.hex"
-                          DOP="dist/default/debug/boost-7-slave.X.debug.elf"
-                          FL="dist/default/production/boost-7-slave.X.production.hex"
-                          PD="dist/default/production/boost-7-slave.X.production.elf"
-                          DD="dist/default/debug/boost-7-slave.X.debug.elf">
+                          OP="dist/default/production/SLAV.X.production.hex"
+                          DOP="dist/default/debug/SLAV.X.debug.elf"
+                          FL="dist/default/production/SLAV.X.production.hex"
+                          PD="dist/default/production/SLAV.X.production.elf"
+                          DD="dist/default/debug/SLAV.X.debug.elf">
             </makeArtifact>
-            <simage>boost-7-slave</simage>
+            <simage>SLAV</simage>
             <saddress></saddress>
           </sproject>
           <score>
-            <scdebug>true</scdebug>
+            <scdebug>false</scdebug>
             <scname>S1</scname>
           </score>
         </subordinates>

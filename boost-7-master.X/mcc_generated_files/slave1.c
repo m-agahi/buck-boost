@@ -141,9 +141,10 @@
 
 #include "slave1.h"
 #include <libpic30.h>
-#include "boost-7-slave.h"
+#include "../../SLAV.X/dist/default/production/SLAV.h"
 
 #define SLAVE_IMAGE     boost-7-slave
+//#define SLAVE_IMAGE     boost-7-slave
 #define SLAVE_NUMBER    1
 
 /*
