@@ -56,3 +56,13 @@
 /slave-test-1/master.X/dist/
 /slave-test-1/SLAV.X/build/
 /slave-test-1/SLAV.X/dist/
+/boost-7/SLAV.X/build/
+/boost-7/SLAV.X/dist/
+/boost-7/boost-7-master.X/build/
+/boost-7/slave.X/build/
+/boost-7/slave.X/dist/
+/boost-7/boost-7-master.X/dist/
+/boost-6.6/boost-6.6-works.X/build/
+/boost-6.6/boost-6.6-works.X/dist/
+/pwm-test-5-pwm-works.X/build/
+/pwm-test-5-pwm-works.X/dist/

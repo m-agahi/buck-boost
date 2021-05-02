@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+  <executable name="dist/default/debug/pwm-test-4.X.debug.elf">
+    <memory name="data">
+      <units>bytes</units>
+      <length>49152</length>
+      <used>114</used>
+      <free>49038</free>
+    </memory>
+    <memory name="program">
+      <units>bytes</units>
+      <length>539520</length>
+      <used>2376</used>
+      <free>537144</free>
+    </memory>
+  </executable>
+</project>
