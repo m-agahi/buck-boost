@@ -57,15 +57,17 @@ int main(void)
 {
     int highOutputPin, lowOutputPin, pwmIOConH, period, dutyCycle,DTCMPSELReg, PMODReg;
     int ADCResult;
-    enum ADC1_CHANNEL ADCChannel = channel_S1AN0;
+    //enum ADC1_CHANNEL ADCChannel = channel_S1AN0;
     
     // initialize the device
     SYSTEM_Initialize();
     
-    highOutputPin = 0; // PIN C14
-    lowOutputPin = 1; // PIN C15
+    highOutputPin = 1; // PIN C14 //0
+    lowOutputPin = 0; // PIN C15  //1
     period = 39992;
-    dutyCycle = 3060;
+    //dutyCycle = 3060; //6.6?
+    dutyCycle = 38000;
+
     DTCMPSELReg=1; // Dead-time compensation is controlled by PCI feed-forward limit logic
     PMODReg= 1; // PWM Generator outputs operate in Independent mode
     _LATE0 = 0;
@@ -75,26 +77,34 @@ int main(void)
     pwmIOConH = (PMODReg << 4) + (highOutputPin << 3) + (lowOutputPin << 2) + (DTCMPSELReg << 7);
     PWM_Initialize(period, dutyCycle, pwmIOConH);
     
+    
+    
+    ADC_SetConfiguration(ADC_CONFIGURATION_DEFAULT, false, true, true);
+    ADC_ChannelEnable(ADC_CHANNEL_FB, 0x1);    //Select alternate input #1 to core 0 
+    //ADC_ChannelEnable(ADC_CHANNEL_VIN_FB, false);
+    //ADC_ChannelInterruptConfig(ADC_CHANNEL_BUCK_FB, 6, 13);
+    //ADC_ChannelInterruptConfig(ADC_CHANNEL_VIN_FB, 4, 13);          //Triggered from same source as buck output, ISR priority not used as read from same ISR
+    //ADC_ChannelInterruptEnable(ADC_CHANNEL_BUCK_FB); 
+    //ADC_ChannelInterruptEnable(ADC_CHANNEL_FB);     
 
 
     while (1)
     {
         // Add your application code
-        if (ADC1_IsConversionComplete( ADCChannel ))
-        {
-            ADCResult = ADC1_ConversionResultGet( ADCChannel );
-            _LATE0 = 0;
-            _LATE1 = 1;
-            __delay_ms(500);
-            _LATE0 = 1;
-            _LATE1 = 0;
-            __delay_ms(500);
-        }
+        //if (ADC1_IsConversionComplete( ADCChannel ))
+        //{
+            ADC_SetConfiguration(ADC_CONFIGURATION_DEFAULT, false, true, true);
+            ADC_ChannelEnable(ADC_CHANNEL_FB, 0x1);    //Select alternate input #1 to core 0 
+            ADCResult = ADC_Read12bit( ADC_CHANNEL_FB );
+            
+
+            
+        //}
         
-        if ( ADCResult == 0 )
+        if ( ADCResult <= 1024 )
         {
-            _LATE0 = 1;
-            _LATE1 = 1;
+            _LATE0 = 0;
+            _LATE1 = 0;
         }
         else if (ADCResult <= 2048)
         {
@@ -108,10 +118,23 @@ int main(void)
         }
         else
         {
+            _LATE0 = 1;
+            _LATE1 = 1;
+        }
+        
+        
+        //Enable and configure the ADC so it can sample the output/input voltages.
+    
+        
+        
+        
+        
+        __delay_ms(500)
             _LATE0 = 0;
             _LATE1 = 0;
-        }
+        
         __delay_ms(500)
+
     }
     return 1; 
 }

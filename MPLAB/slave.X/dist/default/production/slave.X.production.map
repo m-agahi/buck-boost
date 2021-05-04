@@ -392,20 +392,20 @@ usercode
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x47c6
+.debug_info       0x000000       0x480e
  *(.debug_info)
- .debug_info      0x000000        0x4be build/default/production/msi.o
- .debug_info      0x0004be        0x7d1 build/default/production/pwm.o
- .debug_info      0x000c8f        0xfdc build/default/production/system.o
- .debug_info      0x001c6b        0x863 build/default/production/timer_1ms.o
- .debug_info      0x0024ce        0x6ff build/default/production/pdm_dac.o
- .debug_info      0x002bcd        0xe27 build/default/production/adc.o
- .debug_info      0x0039f4        0x205 build/default/production/main.o
- .debug_info      0x003bf9        0x6af build/default/production/transient_load.o
- .debug_info      0x0042a8        0x32d build/default/production/compensator_init.o
- .debug_info      0x0045d5         0xa3 build/default/production/compensator_isr.o
- .debug_info      0x004678         0xa8 build/default/production/init_alt_w_registers.o
- .debug_info      0x004720         0xa6 build/default/production/smps_2p2z_dspic_v2.o
+ .debug_info      0x000000        0x4c4 build/default/production/msi.o
+ .debug_info      0x0004c4        0x7d7 build/default/production/pwm.o
+ .debug_info      0x000c9b        0xfe2 build/default/production/system.o
+ .debug_info      0x001c7d        0x869 build/default/production/timer_1ms.o
+ .debug_info      0x0024e6        0x705 build/default/production/pdm_dac.o
+ .debug_info      0x002beb        0xe2d build/default/production/adc.o
+ .debug_info      0x003a18        0x20b build/default/production/main.o
+ .debug_info      0x003c23        0x6b5 build/default/production/transient_load.o
+ .debug_info      0x0042d8        0x333 build/default/production/compensator_init.o
+ .debug_info      0x00460b         0xa9 build/default/production/compensator_isr.o
+ .debug_info      0x0046b4         0xae build/default/production/init_alt_w_registers.o
+ .debug_info      0x004762         0xac build/default/production/smps_2p2z_dspic_v2.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0x844

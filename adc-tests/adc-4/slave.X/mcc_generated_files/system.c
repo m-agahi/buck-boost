@@ -69,7 +69,7 @@ void SYSTEM_Initialize(void)
     INTERRUPT_Initialize();
     MASTER_Initialize();
     CLC1_Initialize();
-    ADC1_Initialize();
+    //ADC1_Initialize();
     //CMP1_Initialize();
     PWM_Initialize(period, dutyCycle, pwmIOConH);
     INTERRUPT_GlobalEnable();

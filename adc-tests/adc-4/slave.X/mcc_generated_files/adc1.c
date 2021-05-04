@@ -1,368 +1,297 @@
-/**
-  ADC1 Generated Driver File
+/*******************************************************************************
+Copyright 2016 Microchip Technology Inc. (www.microchip.com)
 
-  @Company
-    Microchip Technology Inc.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-  @File Name
-    adc1.c
+    http://www.apache.org/licenses/LICENSE-2.0
 
-  @Summary
-    This is the generated driver implementation file for the ADC1 driver using PIC24 / dsPIC33 / PIC32MM MCUs
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*******************************************************************************/
 
-  @Description
-    This source file provides APIs for ADC1.
-    Generation Information :
-        Product Revision  :  PIC24 / dsPIC33 / PIC32MM MCUs - 1.170.0
-        Device            :  dsPIC33CH512MP508S1      
-    The generated drivers are tested against the following:
-        Compiler          :  XC16 v1.61
-        MPLAB 	          :  MPLAB X v5.45
-*/
+#include <xc.h>
 
-/*
-    (c) 2020 Microchip Technology Inc. and its subsidiaries. You may use this
-    software and any derivatives exclusively with Microchip products.
-
-    THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
-    EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED
-    WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A
-    PARTICULAR PURPOSE, OR ITS INTERACTION WITH MICROCHIP PRODUCTS, COMBINATION
-    WITH ANY OTHER PRODUCTS, OR USE IN ANY APPLICATION.
-
-    IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
-    INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
-    WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS
-    BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE
-    FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
-    ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
-    THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
-
-    MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE
-    TERMS.
-*/
-
-/**
-  Section: Included Files
-*/
+#include <stdint.h>
+#include <stdbool.h>
 
 #include "adc1.h"
 
-/**
- Section: File specific functions
-*/
+#ifndef FCY
+#define FCY 180000000
+#endif
 
-static void (*ADC1_CommonDefaultInterruptHandler)(void);
-static void (*ADC1_channel_S1AN2DefaultInterruptHandler)(uint16_t adcVal);
-static void (*ADC1_channel_S1AN19DefaultInterruptHandler)(uint16_t adcVal);
-static void (*ADC1_channel_S1AN20DefaultInterruptHandler)(uint16_t adcVal);
-static void (*ADC1_channel_S1AN0DefaultInterruptHandler)(uint16_t adcVal);
-
-/**
-  Section: Driver Interface
-*/
-
-void ADC1_Initialize (void)
+/*********************************************************************
+* Function: ADC_Read12bit(ADC_CHANNEL channel);
+*
+* Overview: Reads the requested ADC channel and returns the 12-bit
+*           representation of this data.
+*
+* PreCondition: channel is configured via the ADCConfigure() function
+*
+* Input: ADC_CHANNEL channel - enumeration of the ADC channels
+*        available in this demo.  They should be meaningful names and
+*        not the names of the ADC pins on the device (as the demo code
+*        may be ported to other boards).
+*         i.e. - ADCReadPercentage(ADC_CHANNEL_POTENTIOMETER);
+*
+* Output: uint16_t - The 12-bit ADC channel conversion value, or 0xFFFF for an 
+ *                   error.
+*
+********************************************************************/
+uint16_t ADC_Read12bit(ADC_CHANNEL channel)
 {
-    // ADSIDL disabled; ADON enabled; 
-    ADCON1L = (0x8000 & 0x7FFF); //Disabling ADON bit
-    // FORM Integer; SHRRES 12-bit resolution; 
-    ADCON1H = 0x60;
-    // PTGEN disabled; SHRADCS 2; REFCIE disabled; SHREISEL Early interrupt is generated 1 TADCORE clock prior to data being ready; REFERCIE disabled; EIEN disabled; 
-    ADCON2L = 0x00;
-    // SHRSAMC 2; 
-    ADCON2H = 0x02;
-    // SWCTRG disabled; SHRSAMP disabled; SUSPEND disabled; SWLCTRG disabled; SUSPCIE disabled; CNVCHSEL AN0; REFSEL disabled; 
-    ADCON3L = 0x00;
-    // SHREN enabled; C1EN disabled; C0EN enabled; CLKDIV 1; CLKSEL FOSC; 
-    ADCON3H = (0x4081 & 0xFF00); //Disabling C0EN, C1EN, C2EN, C3EN and SHREN bits
-    // SAMC0EN disabled; SAMC1EN disabled; SYNCTRG1 disabled; SYNCTRG0 disabled; 
-    ADCON4L = 0x00;
-    // C0CHS S1AN0; C1CHS S1AN1; 
-    ADCON4H = 0x00;
-    // SIGN0 disabled; SIGN4 disabled; SIGN3 disabled; SIGN2 disabled; SIGN1 disabled; SIGN7 disabled; SIGN6 disabled; DIFF0 disabled; SIGN5 disabled; DIFF1 disabled; 
-    ADMOD0L = 0x00;
-    // SIGN10 disabled; SIGN11 disabled; SIGN12 disabled; SIGN13 disabled; SIGN8 disabled; SIGN14 disabled; SIGN15 disabled; SIGN9 disabled; 
-    ADMOD0H = 0x00;
-    // SIGN20 disabled; SIGN16 disabled; SIGN17 disabled; SIGN18 disabled; SIGN19 disabled; 
-    ADMOD1L = 0x00;
-    // IE15 disabled; IE1 disabled; IE0 enabled; IE3 disabled; IE2 enabled; IE5 disabled; IE4 disabled; IE10 disabled; IE7 disabled; IE6 disabled; IE9 disabled; IE13 disabled; IE8 disabled; IE14 disabled; IE11 disabled; IE12 disabled; 
-    ADIEL = 0x05;
-    // IE17 disabled; IE18 disabled; IE16 disabled; IE19 enabled; IE20 enabled; 
-    ADIEH = 0x18;
-    // CMPEN10 disabled; CMPEN11 disabled; CMPEN6 disabled; CMPEN5 disabled; CMPEN4 disabled; CMPEN3 disabled; CMPEN2 disabled; CMPEN1 disabled; CMPEN0 disabled; CMPEN14 disabled; CMPEN9 disabled; CMPEN15 disabled; CMPEN8 disabled; CMPEN12 disabled; CMPEN7 disabled; CMPEN13 disabled; 
-    ADCMP0ENL = 0x00;
-    // CMPEN10 disabled; CMPEN11 disabled; CMPEN6 disabled; CMPEN5 disabled; CMPEN4 disabled; CMPEN3 disabled; CMPEN2 disabled; CMPEN1 disabled; CMPEN0 disabled; CMPEN14 disabled; CMPEN9 disabled; CMPEN15 disabled; CMPEN8 disabled; CMPEN12 disabled; CMPEN7 disabled; CMPEN13 disabled; 
-    ADCMP1ENL = 0x00;
-    // CMPEN10 disabled; CMPEN11 disabled; CMPEN6 disabled; CMPEN5 disabled; CMPEN4 disabled; CMPEN3 disabled; CMPEN2 disabled; CMPEN1 disabled; CMPEN0 disabled; CMPEN14 disabled; CMPEN9 disabled; CMPEN15 disabled; CMPEN8 disabled; CMPEN12 disabled; CMPEN7 disabled; CMPEN13 disabled; 
-    ADCMP2ENL = 0x00;
-    // CMPEN10 disabled; CMPEN11 disabled; CMPEN6 disabled; CMPEN5 disabled; CMPEN4 disabled; CMPEN3 disabled; CMPEN2 disabled; CMPEN1 disabled; CMPEN0 disabled; CMPEN14 disabled; CMPEN9 disabled; CMPEN15 disabled; CMPEN8 disabled; CMPEN12 disabled; CMPEN7 disabled; CMPEN13 disabled; 
-    ADCMP3ENL = 0x00;
-    // CMPEN20 disabled; CMPEN18 disabled; CMPEN19 disabled; CMPEN16 disabled; CMPEN17 disabled; 
-    ADCMP0ENH = 0x00;
-    // CMPEN20 disabled; CMPEN18 disabled; CMPEN19 disabled; CMPEN16 disabled; CMPEN17 disabled; 
-    ADCMP1ENH = 0x00;
-    // CMPEN20 disabled; CMPEN18 disabled; CMPEN19 disabled; CMPEN16 disabled; CMPEN17 disabled; 
-    ADCMP2ENH = 0x00;
-    // CMPEN20 disabled; CMPEN18 disabled; CMPEN19 disabled; CMPEN16 disabled; CMPEN17 disabled; 
-    ADCMP3ENH = 0x00;
-    // CMPLO 0; 
-    ADCMP0LO = 0x00;
-    // CMPLO 0; 
-    ADCMP1LO = 0x00;
-    // CMPLO 0; 
-    ADCMP2LO = 0x00;
-    // CMPLO 0; 
-    ADCMP3LO = 0x00;
-    // CMPHI 0; 
-    ADCMP0HI = 0x00;
-    // CMPHI 0; 
-    ADCMP1HI = 0x00;
-    // CMPHI 0; 
-    ADCMP2HI = 0x00;
-    // CMPHI 0; 
-    ADCMP3HI = 0x00;
-    // OVRSAM 4x; MODE Oversampling Mode; FLCHSEL AN0; IE disabled; FLEN disabled; 
-    ADFL0CON = 0x400;
-    // OVRSAM 4x; MODE Oversampling Mode; FLCHSEL AN0; IE disabled; FLEN disabled; 
-    ADFL1CON = 0x400;
-    // OVRSAM 4x; MODE Oversampling Mode; FLCHSEL AN0; IE disabled; FLEN disabled; 
-    ADFL2CON = 0x400;
-    // OVRSAM 4x; MODE Oversampling Mode; FLCHSEL AN0; IE disabled; FLEN disabled; 
-    ADFL3CON = 0x400;
-    // HIHI disabled; LOLO disabled; HILO disabled; BTWN disabled; LOHI disabled; CMPEN disabled; IE disabled; 
-    ADCMP0CON = 0x00;
-    // HIHI disabled; LOLO disabled; HILO disabled; BTWN disabled; LOHI disabled; CMPEN disabled; IE disabled; 
-    ADCMP1CON = 0x00;
-    // HIHI disabled; LOLO disabled; HILO disabled; BTWN disabled; LOHI disabled; CMPEN disabled; IE disabled; 
-    ADCMP2CON = 0x00;
-    // HIHI disabled; LOLO disabled; HILO disabled; BTWN disabled; LOHI disabled; CMPEN disabled; IE disabled; 
-    ADCMP3CON = 0x00;
-    // LVLEN9 disabled; LVLEN8 disabled; LVLEN11 disabled; LVLEN7 disabled; LVLEN10 disabled; LVLEN6 disabled; LVLEN13 disabled; LVLEN5 disabled; LVLEN12 disabled; LVLEN4 disabled; LVLEN15 disabled; LVLEN3 disabled; LVLEN14 disabled; LVLEN2 disabled; LVLEN1 disabled; LVLEN0 disabled; 
-    ADLVLTRGL = 0x00;
-    // LVLEN20 disabled; LVLEN17 disabled; LVLEN16 disabled; LVLEN19 disabled; LVLEN18 disabled; 
-    ADLVLTRGH = 0x00;
-    // SAMC 0; 
-    ADCORE0L = 0x00;
-    // SAMC 0; 
-    ADCORE1L = 0x00;
-    // RES 12-bit resolution; EISEL Early interrupt is generated 1 TADCORE clock prior to data being ready; ADCS 2; 
-    ADCORE0H = 0x300;
-    // RES 12-bit resolution; EISEL Early interrupt is generated 1 TADCORE clock prior to data being ready; ADCS 2; 
-    ADCORE1H = 0x300;
-    // EIEN9 disabled; EIEN7 disabled; EIEN8 disabled; EIEN5 disabled; EIEN6 disabled; EIEN3 disabled; EIEN4 disabled; EIEN1 disabled; EIEN2 disabled; EIEN13 disabled; EIEN0 disabled; EIEN12 disabled; EIEN11 disabled; EIEN10 disabled; EIEN15 disabled; EIEN14 disabled; 
-    ADEIEL = 0x00;
-    // EIEN17 disabled; EIEN16 disabled; EIEN19 disabled; EIEN18 disabled; EIEN20 disabled; 
-    ADEIEH = 0x00;
-    // C0CIE disabled; C1CIE disabled; SHRCIE disabled; WARMTIME 32768 Source Clock Periods; 
-    ADCON5H = (0xF00 & 0xF0FF); //Disabling WARMTIME bit
-	
-    //Assign Default Callbacks
-    ADC1_SetCommonInterruptHandler(&ADC1_CallBack);
-    ADC1_Setchannel_S1AN2InterruptHandler(&ADC1_channel_S1AN2_CallBack);
-    ADC1_Setchannel_S1AN19InterruptHandler(&ADC1_channel_S1AN19_CallBack);
-    ADC1_Setchannel_S1AN20InterruptHandler(&ADC1_channel_S1AN20_CallBack);
-    ADC1_Setchannel_S1AN0InterruptHandler(&ADC1_channel_S1AN0_CallBack);
+    //For devices using the new high speed multi-core SAR, like the dsPIC33CH512MP508
+    volatile uint16_t* pResultRegister = (&ADCBUF0) + channel;
     
-    // Clearing channel_S1AN2 interrupt flag.
-    IFS5bits.ADCAN2IF = 0;
-    // Enabling channel_S1AN2 interrupt.
-    IEC5bits.ADCAN2IE = 1;
-    // Clearing channel_S1AN19 interrupt flag.
-    IFS6bits.ADCAN19IF = 0;
-    // Enabling channel_S1AN19 interrupt.
-    IEC6bits.ADCAN19IE = 1;
-    // Clearing channel_S1AN20 interrupt flag.
-    IFS6bits.ADCAN20IF = 0;
-    // Enabling channel_S1AN20 interrupt.
-    IEC6bits.ADCAN20IE = 1;
-    // Clearing channel_S1AN0 interrupt flag.
-    IFS5bits.ADCAN0IF = 0;
-    // Enabling channel_S1AN0 interrupt.
-    IEC5bits.ADCAN0IE = 1;
+    uint16_t bitOfInterestMask;
 
-    // Setting WARMTIME bit
-    ADCON5Hbits.WARMTIME = 0xF;
-    // Enabling ADC Module
-    ADCON1Lbits.ADON = 0x1;
-    // Enabling Power for the Shared Core
-    ADC1_SharedCorePowerEnable();
-    // Enabling Power for Core0
-    ADC1_Core0PowerEnable();
+    //Select the channel of interest
+    ADCON3L = (ADCON3L & 0xFE00) | channel;
+    //Generate a manual single channel trigger event to start the conversion
+    ADCON3Lbits.CNVRTCH = 1;
 
-    //TRGSRC0 Slave CLC1; TRGSRC1 Slave CLC1; 
-    ADTRIG0L = 0x1D1D;
-    //TRGSRC3 None; TRGSRC2 Common Software Trigger; 
-    ADTRIG0H = 0x01;
-    //TRGSRC4 None; TRGSRC5 None; 
-    ADTRIG1L = 0x00;
-    //TRGSRC6 None; TRGSRC7 None; 
-    ADTRIG1H = 0x00;
-    //TRGSRC8 None; TRGSRC9 None; 
-    ADTRIG2L = 0x00;
-    //TRGSRC11 None; TRGSRC10 None; 
-    ADTRIG2H = 0x00;
-    //TRGSRC13 None; TRGSRC12 None; 
-    ADTRIG3L = 0x00;
-    //TRGSRC15 None; TRGSRC14 None; 
-    ADTRIG3H = 0x00;
-    //TRGSRC17 None; TRGSRC16 None; 
-    ADTRIG4L = 0x00;
-    //TRGSRC19 Common Software Trigger; TRGSRC18 None; 
-    ADTRIG4H = 0x100;
-    //TRGSRC20 Common Software Trigger; 
-    ADTRIG5L = 0x01;
-}
-
-void ADC1_Core0PowerEnable ( ) 
-{
-    ADCON5Lbits.C0PWR = 1; 
-    while(ADCON5Lbits.C0RDY == 0);
-    ADCON3Hbits.C0EN = 1;     
-}
-
-void ADC1_Core1PowerEnable ( ) 
-{
-    ADCON5Lbits.C1PWR = 1; 
-    while(ADCON5Lbits.C1RDY == 0);
-    ADCON3Hbits.C1EN = 1;     
-}
-
-void ADC1_SharedCorePowerEnable ( ) 
-{
-    ADCON5Lbits.SHRPWR = 1;   
-    while(ADCON5Lbits.SHRRDY == 0);
-    ADCON3Hbits.SHREN = 1;   
-}
-
-
-void __attribute__ ((weak)) ADC1_CallBack ( void )
-{ 
-
-}
-
-void ADC1_SetCommonInterruptHandler(void* handler)
-{
-    ADC1_CommonDefaultInterruptHandler = handler;
-}
-
-void __attribute__ ((weak)) ADC1_Tasks ( void )
-{
-    if(IFS5bits.ADCIF)
+    //Wait for the conversion to be complete and the result to be ready.
+    if(channel < 16)
     {
-        if(ADC1_CommonDefaultInterruptHandler) 
-        { 
-            ADC1_CommonDefaultInterruptHandler(); 
+        //Wait until the corresponding ANxxRDY bit asserts, indicating new data available.
+        bitOfInterestMask = (0x0001 << channel);
+        while((ADSTATL & bitOfInterestMask) == 0);            
+    }
+    else
+    {
+        //Wait until the corresponding ANxxRDY bit asserts, indicating new data available.
+        bitOfInterestMask = (0x0001 << (channel - 16));
+        while((ADSTATH & bitOfInterestMask) == 0);            
+    }
+
+    //The data should be available.  Return it now.
+    return (*pResultRegister);
+}
+
+
+
+
+/*********************************************************************
+* Function: uint16_t ADC_Read12bitAverage(ADC_CHANNEL channel, uint16_t numberOfSamplesInAverage)
+*
+* Overview: Repeatedly reads the requested ADC channel and returns a 12-bit
+*           representation of the average value returned by the ADC over the
+*           sample set.
+*
+* PreCondition: channel is configured via the ADCConfigure() function
+*
+* Input: ADC_CHANNEL channel - enumeration of the ADC channels
+*        available in this demo.  They should be meaningful names and
+*        not the names of the ADC pins on the device (as the demo code
+*        may be ported to other boards).
+*         i.e. - ADCReadPercentage(ADC_CHANNEL_POTENTIOMETER);
+*        uint16_t numberOfSamplesInAverage - the number of samples to take when
+*                 computing the average result.  The more the samples, the better
+*                 the result quality, but the longer the operation will take.
+*
+* Output: uint16_t - The 12-bit average ADC channel conversion result value
+*
+********************************************************************/
+uint16_t ADC_Read12bitAverage(ADC_CHANNEL channel, uint16_t numberOfSamplesInAverage)
+{
+    uint32_t resultAccumulator = 0;
+    uint16_t i;
+    
+    //Collect a series of ADC result values and add them to an accumulator.
+    for(i = 0; i < numberOfSamplesInAverage; i++)
+    {
+        resultAccumulator += ADC_Read12bit(channel);
+    }
+    
+    if(i > 0)
+    {
+        //Divide the accumulator sum by the number of samples in the sum, to get the average result value.
+        return ((resultAccumulator + (i >> 1)) / i);       //Note: + (i >> 1) is done to achieve a rounding effect, rather than simple truncation.
+    }
+    
+    return 0;
+}
+
+
+/*********************************************************************
+* Function: bool ADC_ChannelEnable(ADC_CHANNEL channel, ADC_CONFIGURATION configuration);
+*
+* Overview: Configures the ADC module to specified setting
+*
+* PreCondition: none
+*
+* Input: ADC_CHANNEL channel - the channel to enable
+*        ADC_CONFIGURATION configuration - the mode in which to run the ADC
+*
+* Output: bool - true if successfully configured.  false otherwise.
+*
+********************************************************************/
+bool ADC_ChannelEnable(ADC_CHANNEL channel, uint8_t altInput)
+{
+    switch(channel)
+    {
+        case ADC_CHANNEL_1:
+            ANSELCbits.ANSELC1 = 1 ;
+            ADCON4Hbits.C1CHS = altInput;
+            return true;
+          
+        case ADC_CHANNEL_15:
+            ANSELAbits.ANSELA1 = 1 ;
+            return true;   
+            
+        default:
+            return false;
+    }
+    
+    return false;
+}
+
+/*********************************************************************
+* Function: bool ADC_SetConfiguration(ADC_CONFIGURATION configuration)
+*
+* Overview: Configures the ADC module to specified setting
+*
+* PreCondition: none
+*
+* Input: ADC_CONFIGURATION configuration - the mode in which to run the ADC
+*
+* Output: bool - true if successfully configured.  false otherwise.
+*
+********************************************************************/
+bool ADC_SetConfiguration(ADC_CONFIGURATION configuration, bool enCore0, bool enCore1, bool enSHCore)
+{
+    if(configuration == ADC_CONFIGURATION_DEFAULT)
+    {
+        ADCON1L = 0x0000;       //CVD off, ADC operates in idle mode.
+        ADCON1H = 0x0060;       //Integer output formatting, 12-bit resolution
+        
+        //NOTE: ADC clock period should be >=14.28ns, based on dsPIC33CH512MP508 datasheet
+        ADCON2L = 0x0000;       //TADCORE = TCORESRC / 2
+        ADCON2H = 0x0002;       //Sample time (SAMC) = 4 * TADCORE
+        ADCON3L = 0x0000;       //AVDD/AVSS as references
+        ADCON3H = 0x4000;       //TCORESRC = FOSC
+        ADCON5H = 0x0F00;       //32768 TCORESRC clocks for warm up time
+
+        ADCON1Lbits.ADON = 1;   //Turn on the ADC module now.
+        
+        if(enCore0)
+        {
+            ADCON3Hbits.C0EN = 1;   //Enable Core 0
+            ADCON5Lbits.C0PWR = 1;
+            //Wait until the ADC "shared core" claims it is ready to go.
+            while(ADCON5Lbits.C0RDY == 0); 
+        }    
+        
+        if(enCore1)
+        {
+            ADCON3Hbits.C1EN = 1;   //Enable Core 1
+            ADCON5Lbits.C1PWR = 1;
+            //Wait until the ADC "shared core" claims it is ready to go.
+            while(ADCON5Lbits.C1RDY == 0); 
+        }    
+        
+        if(enSHCore)
+        {   
+            ADCON3Hbits.SHREN = 1;   //Enable Shared Core 
+            ADCON5Lbits.SHRPWR = 1;
+            //Wait until the ADC "shared core" claims it is ready to go.
+            while(ADCON5Lbits.SHRRDY == 0);
         }
-
-        // clear the ADC1 interrupt flag
-        IFS5bits.ADCIF = 0;
+            
+            
+        return true;
     }
+		
+    return false;
 }
 
-void __attribute__ ((weak)) ADC1_channel_S1AN2_CallBack( uint16_t adcVal )
-{ 
-
-}
-
-void ADC1_Setchannel_S1AN2InterruptHandler(void* handler)
+void ADC_ChannelInterruptEnable(ADC_CHANNEL channel)
 {
-    ADC1_channel_S1AN2DefaultInterruptHandler = handler;
-}
-
-void __attribute__ ( ( __interrupt__ , auto_psv, weak ) ) _ADCAN2Interrupt ( void )
-{
-    uint16_t valchannel_S1AN2;
-    //Read the ADC value from the ADCBUF
-    valchannel_S1AN2 = ADCBUF2;
-
-    if(ADC1_channel_S1AN2DefaultInterruptHandler) 
-    { 
-        ADC1_channel_S1AN2DefaultInterruptHandler(valchannel_S1AN2); 
+    uint16_t bitOfInterestMask;
+     
+    //Enable the interrupt
+    if(channel > 4)
+    {
+        bitOfInterestMask = (0x0001 << (channel-5));
+        IEC6 |=  bitOfInterestMask;
     }
-
-    //clear the channel_S1AN2 interrupt flag
-    IFS5bits.ADCAN2IF = 0;
-}
-
-void __attribute__ ((weak)) ADC1_channel_S1AN19_CallBack( uint16_t adcVal )
-{ 
-
-}
-
-void ADC1_Setchannel_S1AN19InterruptHandler(void* handler)
-{
-    ADC1_channel_S1AN19DefaultInterruptHandler = handler;
-}
-
-void __attribute__ ( ( __interrupt__ , auto_psv, weak ) ) _ADCAN19Interrupt ( void )
-{
-    uint16_t valchannel_S1AN19;
-    //Read the ADC value from the ADCBUF
-    valchannel_S1AN19 = ADCBUF19;
-
-    if(ADC1_channel_S1AN19DefaultInterruptHandler) 
-    { 
-        ADC1_channel_S1AN19DefaultInterruptHandler(valchannel_S1AN19); 
+    else {
+        bitOfInterestMask = (0x0001 << (channel+11));
+        IEC5 |=  bitOfInterestMask;        
+    }    
+    
+    //Enable ISR from ADC point of view
+    if(channel < 16)
+    {
+        bitOfInterestMask = (0x0001 << channel);
+        ADIEL |= bitOfInterestMask;
     }
-
-    //clear the channel_S1AN19 interrupt flag
-    IFS6bits.ADCAN19IF = 0;
+    else {
+        bitOfInterestMask = (0x0001 << (channel-16));
+        ADIEH |= bitOfInterestMask;
+    }  
+    
 }
 
-void __attribute__ ((weak)) ADC1_channel_S1AN20_CallBack( uint16_t adcVal )
-{ 
 
-}
-
-void ADC1_Setchannel_S1AN20InterruptHandler(void* handler)
+void ADC_ChannelInterruptConfig(ADC_CHANNEL channel, uint8_t channelISRPriority, uint8_t channelISRTrigSRC)
 {
-    ADC1_channel_S1AN20DefaultInterruptHandler = handler;
-}
-
-void __attribute__ ( ( __interrupt__ , auto_psv, weak ) ) _ADCAN20Interrupt ( void )
-{
-    uint16_t valchannel_S1AN20;
-    //Read the ADC value from the ADCBUF
-    valchannel_S1AN20 = ADCBUF20;
-
-    if(ADC1_channel_S1AN20DefaultInterruptHandler) 
-    { 
-        ADC1_channel_S1AN20DefaultInterruptHandler(valchannel_S1AN20); 
+    volatile uint16_t *pTriggerRegister = (&ADTRIG0L) + (channel>>1);
+    volatile uint16_t *pIPCRegister = (&IPC22);
+    
+    uint16_t bitOfInterestMask = 0xFFF8, sftFactor = 0;
+    uint16_t offset = 0;
+    
+    //Set IPL level for proper ADC Channel
+    if(channel > 0  && channel <= 4) offset = 1;
+    else if(channel > 4 && channel <= 8) offset = 2;
+    else if(channel > 8 && channel <= 12) offset = 3;
+    else if(channel > 12 && channel <= 16) offset = 4;
+    else if(channel > 16 && channel <= 20) offset = 5;
+    
+    // Bit Shifting
+    if(channel % 4 == 1)
+    {
+        //Write to bits 2:0
+        bitOfInterestMask = 0xFFF8;
+        sftFactor = 0;
     }
-
-    //clear the channel_S1AN20 interrupt flag
-    IFS6bits.ADCAN20IF = 0;
-}
-
-
-void __attribute__ ((weak)) ADC1_channel_S1AN0_CallBack( uint16_t adcVal )
-{ 
-
-}
-
-void ADC1_Setchannel_S1AN0InterruptHandler(void* handler)
-{
-    ADC1_channel_S1AN0DefaultInterruptHandler = handler;
-}
-
-void __attribute__ ( ( __interrupt__ , auto_psv, weak ) ) _ADCAN0Interrupt ( void )
-{
-    uint16_t valchannel_S1AN0;
-    //Read the ADC value from the ADCBUF
-    valchannel_S1AN0 = ADCBUF0;
-
-    if(ADC1_channel_S1AN0DefaultInterruptHandler) 
-    { 
-        ADC1_channel_S1AN0DefaultInterruptHandler(valchannel_S1AN0); 
+    else if(channel % 4 == 2)
+    {
+        //Write to bits 6:4
+        bitOfInterestMask = 0xFF8F;
+        sftFactor = 4;
+    }
+    else if(channel % 4 == 3)
+    {
+        //Write to bits 10:8
+        bitOfInterestMask = 0xF8FF;
+        sftFactor = 8;
+    }
+    else if(channel % 4 == 0)
+    {
+        //Write to bits 14:12
+        bitOfInterestMask = 0x8FFF;
+        sftFactor = 12;
     }
 
-    //clear the channel_S1AN0 interrupt flag
-    IFS5bits.ADCAN0IF = 0;
+    pIPCRegister = (&IPC22) + offset;
+    *pIPCRegister &= bitOfInterestMask;
+    *pIPCRegister |= (channelISRPriority << sftFactor);    
+    
+    //Set the proper trigger source for the given ANx Channel
+    if(channel & 0x1) //odd
+    {
+        *pTriggerRegister &= 0x00FF;
+        *pTriggerRegister |= (channelISRTrigSRC<<8);
+    }    
+    else {
+        *pTriggerRegister &= 0xFF00;
+        *pTriggerRegister |= channelISRTrigSRC;  
+    }
 }
-
-
-
-/**
-  End of File
-*/
