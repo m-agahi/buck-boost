@@ -125,28 +125,6 @@ void CLC1_PositiveEdge_CallBack(void);
 */
 void CLC1_NegativeEdge_CallBack(void);
 
-/**
-  @Summary
-    Polled implementation
-
-  @Description
-    This routine is used to implement the tasks for polled implementations.
-  
-  @Preconditions
-    CLC1_Initialize() function should have been 
-    called before calling this function.
- 
-  @Returns 
-    None
- 
-  @Param
-    None
- 
-  @Example
-    Refer to CLC1_Initialize(); for an example
-    
-*/
-void CLC1_PositiveEdge_Tasks(void);
 
 /**
   @Summary

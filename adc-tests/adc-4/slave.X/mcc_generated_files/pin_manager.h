@@ -56,6 +56,152 @@
 */
 /**
   @Summary
+    Sets the GPIO pin, RA3, high using LATA3.
+
+  @Description
+    Sets the GPIO pin, RA3, high using LATA3.
+
+  @Preconditions
+    The RA3 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RA3 high (1)
+    channel_S1AN0_SetHigh();
+    </code>
+
+*/
+#define channel_S1AN0_SetHigh()          (_LATA3 = 1)
+/**
+  @Summary
+    Sets the GPIO pin, RA3, low using LATA3.
+
+  @Description
+    Sets the GPIO pin, RA3, low using LATA3.
+
+  @Preconditions
+    The RA3 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RA3 low (0)
+    channel_S1AN0_SetLow();
+    </code>
+
+*/
+#define channel_S1AN0_SetLow()           (_LATA3 = 0)
+/**
+  @Summary
+    Toggles the GPIO pin, RA3, using LATA3.
+
+  @Description
+    Toggles the GPIO pin, RA3, using LATA3.
+
+  @Preconditions
+    The RA3 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Toggle RA3
+    channel_S1AN0_Toggle();
+    </code>
+
+*/
+#define channel_S1AN0_Toggle()           (_LATA3 ^= 1)
+/**
+  @Summary
+    Reads the value of the GPIO pin, RA3.
+
+  @Description
+    Reads the value of the GPIO pin, RA3.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    uint16_t portValue;
+
+    // Read RA3
+    postValue = channel_S1AN0_GetValue();
+    </code>
+
+*/
+#define channel_S1AN0_GetValue()         _RA3
+/**
+  @Summary
+    Configures the GPIO pin, RA3, as an input.
+
+  @Description
+    Configures the GPIO pin, RA3, as an input.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RA3 as an input
+    channel_S1AN0_SetDigitalInput();
+    </code>
+
+*/
+#define channel_S1AN0_SetDigitalInput()  (_TRISA3 = 1)
+/**
+  @Summary
+    Configures the GPIO pin, RA3, as an output.
+
+  @Description
+    Configures the GPIO pin, RA3, as an output.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RA3 as an output
+    channel_S1AN0_SetDigitalOutput();
+    </code>
+
+*/
+#define channel_S1AN0_SetDigitalOutput() (_TRISA3 = 0)
+/**
+  @Summary
     Sets the GPIO pin, RC1, high using LATC1.
 
   @Description

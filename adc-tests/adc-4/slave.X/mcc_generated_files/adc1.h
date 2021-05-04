@@ -93,8 +93,8 @@ typedef enum ADC1_CHANNEL
     channel_S1AN2,//Channel Name:S1AN2   Assigned to:Shared Channel
     channel_S1AN19,//Channel Name:S1AN19   Assigned to:Shared Channel
     channel_S1AN20,//Channel Name:S1AN20   Assigned to:Shared Channel
-}ADC1_CHANNEL;
-
+    channel_S1AN0,//Channel Name:S1AN0   Assigned to:Dedicated Core0
+} ADC1_CHANNEL;
 extern enum ADC1_CHANNEL ADCChannel;
 
 /**
@@ -394,6 +394,9 @@ inline static uint16_t ADC1_ConversionResultGet( ADC1_CHANNEL channel )
         case channel_S1AN20:
                 result = ADCBUF20;
                 break;
+        case channel_S1AN0:
+                result = ADCBUF0;
+                break;
         default:
                 break;
     }
@@ -451,6 +454,9 @@ inline static bool ADC1_IsConversionComplete(ADC1_CHANNEL channel)
                 break;
         case channel_S1AN20:
                 status = ADSTATHbits.AN20RDY;
+                break;
+        case channel_S1AN0:
+                status = ADSTATLbits.AN0RDY;
                 break;
         default:
                 break;
@@ -671,6 +677,9 @@ inline static void ADC1_IndividualChannelInterruptEnable(ADC1_CHANNEL channel)
         case channel_S1AN20:
                 IEC6bits.ADCAN20IE = 1;
                 break;
+        case channel_S1AN0:
+                IEC5bits.ADCAN0IE = 1;
+                break;
         default:
                 break;
     }
@@ -711,6 +720,9 @@ inline static void ADC1_IndividualChannelInterruptDisable(ADC1_CHANNEL channel)
         case channel_S1AN20:
                 IEC6bits.ADCAN20IE = 0;
                 break;
+        case channel_S1AN0:
+                IEC5bits.ADCAN0IE = 0;
+                break;
         default:
                 break;
     }
@@ -749,6 +761,9 @@ inline static void ADC1_IndividualChannelInterruptFlagClear(ADC1_CHANNEL channel
                 break;
         case channel_S1AN20:
                 IFS6bits.ADCAN20IF = 0;
+                break;
+        case channel_S1AN0:
+                IFS5bits.ADCAN0IF = 0;
                 break;
         default:
                 break;
@@ -893,6 +908,52 @@ void ADC1_channel_S1AN20_CallBack(uint16_t adcVal);
 */
 void ADC1_Setchannel_S1AN20InterruptHandler(void* handler);
 
+
+/**
+  @Summary
+    ADC1 channel_S1AN0 callback routine.
+
+  @Description
+    This routine is a ADC1 channel_S1AN0 callback function.
+  
+  @Preconditions
+    None.
+
+  @Param
+    None.
+
+  @Returns
+    None
+ 
+  @Example 
+    <code>
+        ADC1_Setchannel_S1AN0InterruptHandler(&ADC1_channel_S1AN0_CallBack);
+    </code>
+*/
+void ADC1_channel_S1AN0_CallBack(uint16_t adcVal);
+
+/**
+  @Summary
+    Assigns a function pointer with a ADC1 channel_S1AN0 callback address.
+
+  @Description
+    This routine assigns a function pointer with a ADC1 channel_S1AN0 callback address.
+  
+  @Preconditions
+    None.
+
+  @Param
+    Address of the callback routine.
+
+  @Returns
+    None
+ 
+  @Example 
+    <code>
+        ADC1_Setchannel_S1AN0InterruptHandler(&ADC1_channel_S1AN0_CallBack);
+    </code>
+*/
+void ADC1_Setchannel_S1AN0InterruptHandler(void* handler);
 
 
 

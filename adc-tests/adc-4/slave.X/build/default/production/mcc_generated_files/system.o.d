@@ -4,7 +4,7 @@ build/default/production/mcc_generated_files/system.o: \
  mcc_generated_files/system_types.h mcc_generated_files/clc1.h \
  mcc_generated_files/pwm.h mcc_generated_files/adc1.h \
  mcc_generated_files/master.h mcc_generated_files/interrupt_manager.h \
- mcc_generated_files/traps.h mcc_generated_files/cmp1.h
+ mcc_generated_files/traps.h
 
 mcc_generated_files/pin_manager.h:
 
@@ -25,5 +25,3 @@ mcc_generated_files/master.h:
 mcc_generated_files/interrupt_manager.h:
 
 mcc_generated_files/traps.h:
-
-mcc_generated_files/cmp1.h:

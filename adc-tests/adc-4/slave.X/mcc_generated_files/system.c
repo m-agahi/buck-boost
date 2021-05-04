@@ -54,7 +54,7 @@
 #include "master.h"
 #include "interrupt_manager.h"
 #include "traps.h"
-#include "cmp1.h"
+//#include "cmp1.h"
 
 
 
@@ -70,7 +70,7 @@ void SYSTEM_Initialize(void)
     MASTER_Initialize();
     CLC1_Initialize();
     ADC1_Initialize();
-    CMP1_Initialize();
+    //CMP1_Initialize();
     PWM_Initialize(period, dutyCycle, pwmIOConH);
     INTERRUPT_GlobalEnable();
     SYSTEM_CORCONModeOperatingSet(CORCON_MODE_PORVALUES);

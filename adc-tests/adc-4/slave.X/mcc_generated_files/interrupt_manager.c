@@ -52,12 +52,18 @@
 */
 void INTERRUPT_Initialize (void)
 {
+    //    CLCPEI: CLC1 Positive Edge Event
+    //    Priority: 1
+        IPC31bits.CLC1PEIP = 1;
     //    ADCAN19: ADC AN19 Convert Done
     //    Priority: 1
         IPC27bits.ADCAN19IP = 1;
     //    ADCAN20: ADC AN20 Convert Done
     //    Priority: 1
         IPC27bits.ADCAN20IP = 1;
+    //    ADCAN0: ADC AN0 Convert Done
+    //    Priority: 1
+        IPC22bits.ADCAN0IP = 1;
     //    ADCAN2: ADC AN2 Convert Done
     //    Priority: 1
         IPC23bits.ADCAN2IP = 1;

@@ -48,7 +48,7 @@
 #include "mcc_generated_files/system.h"
 #include "mcc_generated_files/pwm.h"
 #include "mcc_generated_files/adc1.h"
-#define    FCY    8000000UL    // Instruction cycle frequency, Hz - required for __delayXXX() to work
+#define    FCY    16000000UL    // Instruction cycle frequency, Hz - required for __delayXXX() to work
 #include <libpic30.h>        // __delayXXX() functions macros defined here
 /*
                          Main application
@@ -57,7 +57,7 @@ int main(void)
 {
     int highOutputPin, lowOutputPin, pwmIOConH, period, dutyCycle,DTCMPSELReg, PMODReg;
     int ADCResult;
-    enum ADC1_CHANNEL ADCChannel = channel_S1AN2;
+    enum ADC1_CHANNEL ADCChannel = channel_S1AN0;
     
     // initialize the device
     SYSTEM_Initialize();
@@ -83,9 +83,15 @@ int main(void)
         if (ADC1_IsConversionComplete( ADCChannel ))
         {
             ADCResult = ADC1_ConversionResultGet( ADCChannel );
+            _LATE0 = 0;
+            _LATE1 = 1;
+            __delay_ms(500);
+            _LATE0 = 1;
+            _LATE1 = 0;
+            __delay_ms(500);
         }
         
-        if ( ADCResult <= 1024 )
+        if ( ADCResult == 0 )
         {
             _LATE0 = 1;
             _LATE1 = 1;
@@ -105,6 +111,7 @@ int main(void)
             _LATE0 = 0;
             _LATE1 = 0;
         }
+        __delay_ms(500)
     }
     return 1; 
 }
