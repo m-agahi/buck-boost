@@ -97,12 +97,12 @@ Default Scalar Model: Small
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200               0x3dc           0x5ca  (1482)
-.text                        0x5dc               0x956           0xe01  (3585)
-.init.delay32                0xf32                0x1c            0x2a  (42)
-.text                        0xf4e                0x18            0x24  (36)
-.dinit                       0xf66                0x10            0x18  (24)
+.text                        0x5dc               0x952           0xdfb  (3579)
+.init.delay32                0xf2e                0x1c            0x2a  (42)
+.text                        0xf4a                0x18            0x24  (36)
+.dinit                       0xf62                0x10            0x18  (24)
 
-                 Total "program" memory used (bytes):         0x1431  (5169) 7%
+                 Total "program" memory used (bytes):         0x142b  (5163) 7%
 
 
 "data" Memory  [Origin = 0x1000, Length = 0x4000]
@@ -159,35 +159,35 @@ External Symbols in Program Memory (by address):
                   0x00072a                  _ADC_ChannelInterruptEnable
                   0x000780                  _ADC_ChannelInterruptConfig
                   0x0008e0                  _main
-                  0x000a10                  _PWM_Initialize
-                  0x000a98                  _PWM_Generator4_Tasks
-                  0x000ab2                  _PWM_EventA_Tasks
-                  0x000acc                  _PWM_EventB_Tasks
-                  0x000ae6                  _PWM_EventC_Tasks
-                  0x000b00                  _PWM_EventD_Tasks
-                  0x000b1a                  _PWM_EventE_Tasks
-                  0x000b34                  _PWM_EventF_Tasks
-                  0x000b48                  _RESET_GetCause
-                  0x000c54                  _RESET_CauseClearAll
-                  0x000c5c                  _MASTER_Initialize
-                  0x000c64                  _MASTER_InterruptRequestGenerate
-                  0x000c6c                  _MASTER_IsInterruptRequestAcknowledged
-                  0x000c84                  _MASTER_InterruptRequestComplete
-                  0x000c8c                  _MASTER_IsInterruptRequested
-                  0x000ca4                  _MASTER_InterruptRequestAcknowledge
-                  0x000cac                  _MASTER_InterruptRequestAcknowledgeComplete
-                  0x000cb4                  _MASTER_SystemStatusGet
-                  0x000cfc                  _MASTER_Read
-                  0x000d36                  _MASTER_Write
-                  0x000d6e                  _PIN_MANAGER_Initialize
-                  0x000df4                  _CLOCK_Initialize
-                  0x000e42                  _CLOCK_AuxPllLockStatusGet
-                  0x000e62                  _CLC1_Initialize
-                  0x000e88                  _CLC1_NegativeEdge_Tasks
-                  0x000e9a                  _CLC1_OutputStatusGet
-                  0x000ed0                  _SYSTEM_Initialize
-                  0x000efa                  _INTERRUPT_Initialize
-                  0x000f32                  ___delay32
+                  0x000a0c                  _PWM_Initialize
+                  0x000a94                  _PWM_Generator4_Tasks
+                  0x000aae                  _PWM_EventA_Tasks
+                  0x000ac8                  _PWM_EventB_Tasks
+                  0x000ae2                  _PWM_EventC_Tasks
+                  0x000afc                  _PWM_EventD_Tasks
+                  0x000b16                  _PWM_EventE_Tasks
+                  0x000b30                  _PWM_EventF_Tasks
+                  0x000b44                  _RESET_GetCause
+                  0x000c50                  _RESET_CauseClearAll
+                  0x000c58                  _MASTER_Initialize
+                  0x000c60                  _MASTER_InterruptRequestGenerate
+                  0x000c68                  _MASTER_IsInterruptRequestAcknowledged
+                  0x000c80                  _MASTER_InterruptRequestComplete
+                  0x000c88                  _MASTER_IsInterruptRequested
+                  0x000ca0                  _MASTER_InterruptRequestAcknowledge
+                  0x000ca8                  _MASTER_InterruptRequestAcknowledgeComplete
+                  0x000cb0                  _MASTER_SystemStatusGet
+                  0x000cf8                  _MASTER_Read
+                  0x000d32                  _MASTER_Write
+                  0x000d6a                  _PIN_MANAGER_Initialize
+                  0x000df0                  _CLOCK_Initialize
+                  0x000e3e                  _CLOCK_AuxPllLockStatusGet
+                  0x000e5e                  _CLC1_Initialize
+                  0x000e84                  _CLC1_NegativeEdge_Tasks
+                  0x000e96                  _CLC1_OutputStatusGet
+                  0x000ecc                  _SYSTEM_Initialize
+                  0x000ef6                  _INTERRUPT_Initialize
+                  0x000f2e                  ___delay32
 
 External Symbols in Program Memory (by name):
 
@@ -197,34 +197,34 @@ External Symbols in Program Memory (by name):
                   0x0005dc                  _ADC_Read12bit
                   0x000632                  _ADC_Read12bitAverage
                   0x0006b6                  _ADC_SetConfiguration
-                  0x000e62                  _CLC1_Initialize
-                  0x000e88                  _CLC1_NegativeEdge_Tasks
-                  0x000e9a                  _CLC1_OutputStatusGet
-                  0x000e42                  _CLOCK_AuxPllLockStatusGet
-                  0x000df4                  _CLOCK_Initialize
-                  0x000efa                  _INTERRUPT_Initialize
-                  0x000c5c                  _MASTER_Initialize
-                  0x000ca4                  _MASTER_InterruptRequestAcknowledge
-                  0x000cac                  _MASTER_InterruptRequestAcknowledgeComplete
-                  0x000c84                  _MASTER_InterruptRequestComplete
-                  0x000c64                  _MASTER_InterruptRequestGenerate
-                  0x000c6c                  _MASTER_IsInterruptRequestAcknowledged
-                  0x000c8c                  _MASTER_IsInterruptRequested
-                  0x000cfc                  _MASTER_Read
-                  0x000cb4                  _MASTER_SystemStatusGet
-                  0x000d36                  _MASTER_Write
-                  0x000d6e                  _PIN_MANAGER_Initialize
-                  0x000ab2                  _PWM_EventA_Tasks
-                  0x000acc                  _PWM_EventB_Tasks
-                  0x000ae6                  _PWM_EventC_Tasks
-                  0x000b00                  _PWM_EventD_Tasks
-                  0x000b1a                  _PWM_EventE_Tasks
-                  0x000b34                  _PWM_EventF_Tasks
-                  0x000a98                  _PWM_Generator4_Tasks
-                  0x000a10                  _PWM_Initialize
-                  0x000c54                  _RESET_CauseClearAll
-                  0x000b48                  _RESET_GetCause
-                  0x000ed0                  _SYSTEM_Initialize
+                  0x000e5e                  _CLC1_Initialize
+                  0x000e84                  _CLC1_NegativeEdge_Tasks
+                  0x000e96                  _CLC1_OutputStatusGet
+                  0x000e3e                  _CLOCK_AuxPllLockStatusGet
+                  0x000df0                  _CLOCK_Initialize
+                  0x000ef6                  _INTERRUPT_Initialize
+                  0x000c58                  _MASTER_Initialize
+                  0x000ca0                  _MASTER_InterruptRequestAcknowledge
+                  0x000ca8                  _MASTER_InterruptRequestAcknowledgeComplete
+                  0x000c80                  _MASTER_InterruptRequestComplete
+                  0x000c60                  _MASTER_InterruptRequestGenerate
+                  0x000c68                  _MASTER_IsInterruptRequestAcknowledged
+                  0x000c88                  _MASTER_IsInterruptRequested
+                  0x000cf8                  _MASTER_Read
+                  0x000cb0                  _MASTER_SystemStatusGet
+                  0x000d32                  _MASTER_Write
+                  0x000d6a                  _PIN_MANAGER_Initialize
+                  0x000aae                  _PWM_EventA_Tasks
+                  0x000ac8                  _PWM_EventB_Tasks
+                  0x000ae2                  _PWM_EventC_Tasks
+                  0x000afc                  _PWM_EventD_Tasks
+                  0x000b16                  _PWM_EventE_Tasks
+                  0x000b30                  _PWM_EventF_Tasks
+                  0x000a94                  _PWM_Generator4_Tasks
+                  0x000a0c                  _PWM_Initialize
+                  0x000c50                  _RESET_CauseClearAll
+                  0x000b44                  _RESET_GetCause
+                  0x000ecc                  _SYSTEM_Initialize
                   0x00033c                  __AddressError
                   0x0003e6                  __CLC1PInterrupt
                   0x000404                  __DefaultInterrupt
@@ -233,7 +233,7 @@ External Symbols in Program Memory (by name):
                   0x0002fa                  __OscillatorFail
                   0x00039c                  __SoftTrapError
                   0x00031a                  __StackError
-                  0x000f32                  ___delay32
+                  0x000f2e                  ___delay32
                   0x00040a                  ___fixsfsi
                   0x000502                  ___floatundisf
                   0x00044c                  ___floatunsisf
@@ -388,7 +388,7 @@ usercode
  .debug_abbrev    0x0008e1         0x9b build/default/production/mcc_generated_files/pin_manager.o
  .debug_abbrev    0x00097c         0xf9 build/default/production/main.o
 
-.debug_line       0x000000        0xdb8
+.debug_line       0x000000        0xdb7
  *(.debug_line)
  .debug_line      0x000000        0x149 build/default/production/mcc_generated_files/system.o
  .debug_line      0x000149        0x10a build/default/production/mcc_generated_files/interrupt_manager.o
@@ -401,7 +401,7 @@ usercode
  .debug_line      0x0009be        0x16f build/default/production/mcc_generated_files/adc1.o
  .debug_line      0x000b2d         0x1a build/default/production/mcc_generated_files/mcc.o
  .debug_line      0x000b47        0x121 build/default/production/mcc_generated_files/pin_manager.o
- .debug_line      0x000c68        0x150 build/default/production/main.o
+ .debug_line      0x000c68        0x14f build/default/production/main.o
 
 .debug_frame      0x000000        0x872
  *(.debug_frame)
@@ -2910,7 +2910,7 @@ __c30_signature
  .ivt._CLC1PInterrupt
                   0x00010c          0x2 build/default/production/mcc_generated_files/clc1.o
 
-.text             0x0005dc        0x956
+.text             0x0005dc        0x952
  .text            0x0005dc        0x2d6 build/default/production/mcc_generated_files/adc1.o
                   0x0005dc                  _ADC_Read12bit
                   0x000632                  _ADC_Read12bitAverage
@@ -2918,62 +2918,62 @@ __c30_signature
                   0x0006b6                  _ADC_SetConfiguration
                   0x00072a                  _ADC_ChannelInterruptEnable
                   0x000780                  _ADC_ChannelInterruptConfig
- .text            0x0008b2        0x15e build/default/production/main.o
+ .text            0x0008b2        0x15a build/default/production/main.o
                   0x0008e0                  _main
- .text            0x000a10        0x138 build/default/production/mcc_generated_files/pwm.o
-                  0x000a10                  _PWM_Initialize
-                  0x000a92                  _PWM_Generator4_CallBack
-                  0x000a98                  _PWM_Generator4_Tasks
-                  0x000aac                  _PWM_EventA_CallBack
-                  0x000ab2                  _PWM_EventA_Tasks
-                  0x000ac6                  _PWM_EventB_CallBack
-                  0x000acc                  _PWM_EventB_Tasks
-                  0x000ae0                  _PWM_EventC_CallBack
-                  0x000ae6                  _PWM_EventC_Tasks
-                  0x000afa                  _PWM_EventD_CallBack
-                  0x000b00                  _PWM_EventD_Tasks
-                  0x000b14                  _PWM_EventE_CallBack
-                  0x000b1a                  _PWM_EventE_Tasks
-                  0x000b2e                  _PWM_EventF_CallBack
-                  0x000b34                  _PWM_EventF_Tasks
- .text            0x000b48        0x114 build/default/production/mcc_generated_files/reset.o
-                  0x000b48                  _RESET_GetCause
-                  0x000b50                  _RESET_CauseHandler
-                  0x000c54                  _RESET_CauseClearAll
- .text            0x000c5c        0x112 build/default/production/mcc_generated_files/master.o
-                  0x000c5c                  _MASTER_Initialize
-                  0x000c64                  _MASTER_InterruptRequestGenerate
-                  0x000c6c                  _MASTER_IsInterruptRequestAcknowledged
-                  0x000c84                  _MASTER_InterruptRequestComplete
-                  0x000c8c                  _MASTER_IsInterruptRequested
-                  0x000ca4                  _MASTER_InterruptRequestAcknowledge
-                  0x000cac                  _MASTER_InterruptRequestAcknowledgeComplete
-                  0x000cb4                  _MASTER_SystemStatusGet
-                  0x000cfc                  _MASTER_Read
-                  0x000d36                  _MASTER_Write
- .text            0x000d6e         0x86 build/default/production/mcc_generated_files/pin_manager.o
-                  0x000d6e                  _PIN_MANAGER_Initialize
- .text            0x000df4         0x66 build/default/production/mcc_generated_files/clock.o
-                  0x000df4                  _CLOCK_Initialize
-                  0x000e42                  _CLOCK_AuxPllLockStatusGet
- .text            0x000e5a         0x58 build/default/production/mcc_generated_files/clc1.o
-                  0x000e62                  _CLC1_Initialize
-                  0x000e7c                  _CLC1_PositiveEdge_CallBack
-                  0x000e82                  _CLC1_NegativeEdge_CallBack
-                  0x000e88                  _CLC1_NegativeEdge_Tasks
-                  0x000e9a                  _CLC1_OutputStatusGet
- .text            0x000eb2         0x48 build/default/production/mcc_generated_files/system.o
-                  0x000ed0                  _SYSTEM_Initialize
- .text            0x000efa         0x38 build/default/production/mcc_generated_files/interrupt_manager.o
-                  0x000efa                  _INTERRUPT_Initialize
+ .text            0x000a0c        0x138 build/default/production/mcc_generated_files/pwm.o
+                  0x000a0c                  _PWM_Initialize
+                  0x000a8e                  _PWM_Generator4_CallBack
+                  0x000a94                  _PWM_Generator4_Tasks
+                  0x000aa8                  _PWM_EventA_CallBack
+                  0x000aae                  _PWM_EventA_Tasks
+                  0x000ac2                  _PWM_EventB_CallBack
+                  0x000ac8                  _PWM_EventB_Tasks
+                  0x000adc                  _PWM_EventC_CallBack
+                  0x000ae2                  _PWM_EventC_Tasks
+                  0x000af6                  _PWM_EventD_CallBack
+                  0x000afc                  _PWM_EventD_Tasks
+                  0x000b10                  _PWM_EventE_CallBack
+                  0x000b16                  _PWM_EventE_Tasks
+                  0x000b2a                  _PWM_EventF_CallBack
+                  0x000b30                  _PWM_EventF_Tasks
+ .text            0x000b44        0x114 build/default/production/mcc_generated_files/reset.o
+                  0x000b44                  _RESET_GetCause
+                  0x000b4c                  _RESET_CauseHandler
+                  0x000c50                  _RESET_CauseClearAll
+ .text            0x000c58        0x112 build/default/production/mcc_generated_files/master.o
+                  0x000c58                  _MASTER_Initialize
+                  0x000c60                  _MASTER_InterruptRequestGenerate
+                  0x000c68                  _MASTER_IsInterruptRequestAcknowledged
+                  0x000c80                  _MASTER_InterruptRequestComplete
+                  0x000c88                  _MASTER_IsInterruptRequested
+                  0x000ca0                  _MASTER_InterruptRequestAcknowledge
+                  0x000ca8                  _MASTER_InterruptRequestAcknowledgeComplete
+                  0x000cb0                  _MASTER_SystemStatusGet
+                  0x000cf8                  _MASTER_Read
+                  0x000d32                  _MASTER_Write
+ .text            0x000d6a         0x86 build/default/production/mcc_generated_files/pin_manager.o
+                  0x000d6a                  _PIN_MANAGER_Initialize
+ .text            0x000df0         0x66 build/default/production/mcc_generated_files/clock.o
+                  0x000df0                  _CLOCK_Initialize
+                  0x000e3e                  _CLOCK_AuxPllLockStatusGet
+ .text            0x000e56         0x58 build/default/production/mcc_generated_files/clc1.o
+                  0x000e5e                  _CLC1_Initialize
+                  0x000e78                  _CLC1_PositiveEdge_CallBack
+                  0x000e7e                  _CLC1_NegativeEdge_CallBack
+                  0x000e84                  _CLC1_NegativeEdge_Tasks
+                  0x000e96                  _CLC1_OutputStatusGet
+ .text            0x000eae         0x48 build/default/production/mcc_generated_files/system.o
+                  0x000ecc                  _SYSTEM_Initialize
+ .text            0x000ef6         0x38 build/default/production/mcc_generated_files/interrupt_manager.o
+                  0x000ef6                  _INTERRUPT_Initialize
 
-.init.delay32     0x000f32         0x1c
- .init.delay32    0x000f32         0x1c /opt/microchip/xc16/v1.61/bin/bin/../../lib/liblega-pic30-elf.a(delay32ch.Leo)
-                  0x000f32                  ___delay32
+.init.delay32     0x000f2e         0x1c
+ .init.delay32    0x000f2e         0x1c /opt/microchip/xc16/v1.61/bin/bin/../../lib/liblega-pic30-elf.a(delay32ch.Leo)
+                  0x000f2e                  ___delay32
 
-.text             0x000f4e         0x18
- .text            0x000f4e         0x18 build/default/production/mcc_generated_files/traps.o
-                  0x000f4e                  _TRAPS_halt_on_error
+.text             0x000f4a         0x18
+ .text            0x000f4a         0x18 build/default/production/mcc_generated_files/traps.o
+                  0x000f4a                  _TRAPS_halt_on_error
 
-.dinit            0x000f66         0x10
- .dinit           0x000f66         0x10 data_init
+.dinit            0x000f62         0x10
+ .dinit           0x000f62         0x10 data_init

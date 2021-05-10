@@ -103,13 +103,10 @@ int main(void)
         return (dutyCycleTemp);
     }
     
-   
-    
-    
     //period = 39992; // 100 kHz
     period = 39992; // 100 kHz
     //dutyCycle = 7.65; // for 6.37 V output with boost mode
-    dutyCycle = 80;
+    dutyCycle = 80; // 
     dutyCycle = dutyCycleCalculate(period, dutyCycle);  
 
     
@@ -164,9 +161,7 @@ int main(void)
 
             
         //}
-            
-        ADCResult = dutyCycle;
-        
+       
         if ( ADCResult <= 1024 )
         {
             _LATE0 = 0;
