@@ -96,12 +96,12 @@ Default Scalar Model: Small
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200               0x252           0x37b  (891)
-slave_image                  0x452               0xcc0          0x1320  (4896)
-.text                       0x1112               0x376           0x531  (1329)
-.dinit                      0x1488                0x10            0x18  (24)
-.text                       0x1498                 0xc            0x12  (18)
+slave_image                  0x452               0xf2e          0x16c5  (5829)
+.text                       0x1380               0x376           0x531  (1329)
+.dinit                      0x16f6                0x10            0x18  (24)
+.text                       0x1706                 0xc            0x12  (18)
 
-                 Total "program" memory used (bytes):         0x1bf6  (7158) 1%
+                 Total "program" memory used (bytes):         0x1f9b  (8091) 1%
 
 
 "data" Memory  [Origin = 0x1000, Length = 0xc000]
@@ -144,53 +144,53 @@ External Symbols in Program Memory (by address):
                   0x000402                  __SoftTrapError
                   0x00044c                  __DefaultInterrupt
                   0x000452                  _slave
-                  0x001112                  _SLAVE1_Initialize
-                  0x001122                  _SLAVE1_Start
-                  0x00112a                  _SLAVE1_Program
-                  0x00113c                  _SLAVE1_InterruptRequestGenerate
-                  0x001144                  _SLAVE1_IsInterruptRequestAcknowledged
-                  0x00115c                  _SLAVE1_InterruptRequestComplete
-                  0x001164                  _SLAVE1_IsInterruptRequested
-                  0x00117c                  _SLAVE1_InterruptRequestAcknowledge
-                  0x001184                  _SLAVE1_InterruptRequestAcknowledgeComplete
-                  0x00118c                  _SLAVE1_GetResetCause
-                  0x0011a8                  _SLAVE1_ResetCauseClear
-                  0x0011be                  _SLAVE1_SystemStatusGet
-                  0x001206                  _SLAVE1_Read
-                  0x00123e                  _SLAVE1_Write
-                  0x001278                  _RESET_GetCause
-                  0x001384                  _RESET_CauseClearAll
-                  0x00138c                  _CLOCK_Initialize
-                  0x0013e0                  _CLOCK_AuxPllLockStatusGet
-                  0x0013f8                  _PIN_MANAGER_Initialize
-                  0x00145c                  _SYSTEM_Initialize
-                  0x001498                  _INTERRUPT_Initialize
-                  0x00149e                  _main
+                  0x001380                  _SLAVE1_Initialize
+                  0x001390                  _SLAVE1_Start
+                  0x001398                  _SLAVE1_Program
+                  0x0013aa                  _SLAVE1_InterruptRequestGenerate
+                  0x0013b2                  _SLAVE1_IsInterruptRequestAcknowledged
+                  0x0013ca                  _SLAVE1_InterruptRequestComplete
+                  0x0013d2                  _SLAVE1_IsInterruptRequested
+                  0x0013ea                  _SLAVE1_InterruptRequestAcknowledge
+                  0x0013f2                  _SLAVE1_InterruptRequestAcknowledgeComplete
+                  0x0013fa                  _SLAVE1_GetResetCause
+                  0x001416                  _SLAVE1_ResetCauseClear
+                  0x00142c                  _SLAVE1_SystemStatusGet
+                  0x001474                  _SLAVE1_Read
+                  0x0014ac                  _SLAVE1_Write
+                  0x0014e6                  _RESET_GetCause
+                  0x0015f2                  _RESET_CauseClearAll
+                  0x0015fa                  _CLOCK_Initialize
+                  0x00164e                  _CLOCK_AuxPllLockStatusGet
+                  0x001666                  _PIN_MANAGER_Initialize
+                  0x0016ca                  _SYSTEM_Initialize
+                  0x001706                  _INTERRUPT_Initialize
+                  0x00170c                  _main
                   0x057f00                  __FSEC.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x0013e0                  _CLOCK_AuxPllLockStatusGet
-                  0x00138c                  _CLOCK_Initialize
-                  0x001498                  _INTERRUPT_Initialize
-                  0x0013f8                  _PIN_MANAGER_Initialize
-                  0x001384                  _RESET_CauseClearAll
-                  0x001278                  _RESET_GetCause
-                  0x00118c                  _SLAVE1_GetResetCause
-                  0x001112                  _SLAVE1_Initialize
-                  0x00117c                  _SLAVE1_InterruptRequestAcknowledge
-                  0x001184                  _SLAVE1_InterruptRequestAcknowledgeComplete
-                  0x00115c                  _SLAVE1_InterruptRequestComplete
-                  0x00113c                  _SLAVE1_InterruptRequestGenerate
-                  0x001144                  _SLAVE1_IsInterruptRequestAcknowledged
-                  0x001164                  _SLAVE1_IsInterruptRequested
-                  0x00112a                  _SLAVE1_Program
-                  0x001206                  _SLAVE1_Read
-                  0x0011a8                  _SLAVE1_ResetCauseClear
-                  0x001122                  _SLAVE1_Start
-                  0x0011be                  _SLAVE1_SystemStatusGet
-                  0x00123e                  _SLAVE1_Write
-                  0x00145c                  _SYSTEM_Initialize
+                  0x00164e                  _CLOCK_AuxPllLockStatusGet
+                  0x0015fa                  _CLOCK_Initialize
+                  0x001706                  _INTERRUPT_Initialize
+                  0x001666                  _PIN_MANAGER_Initialize
+                  0x0015f2                  _RESET_CauseClearAll
+                  0x0014e6                  _RESET_GetCause
+                  0x0013fa                  _SLAVE1_GetResetCause
+                  0x001380                  _SLAVE1_Initialize
+                  0x0013ea                  _SLAVE1_InterruptRequestAcknowledge
+                  0x0013f2                  _SLAVE1_InterruptRequestAcknowledgeComplete
+                  0x0013ca                  _SLAVE1_InterruptRequestComplete
+                  0x0013aa                  _SLAVE1_InterruptRequestGenerate
+                  0x0013b2                  _SLAVE1_IsInterruptRequestAcknowledged
+                  0x0013d2                  _SLAVE1_IsInterruptRequested
+                  0x001398                  _SLAVE1_Program
+                  0x001474                  _SLAVE1_Read
+                  0x001416                  _SLAVE1_ResetCauseClear
+                  0x001390                  _SLAVE1_Start
+                  0x00142c                  _SLAVE1_SystemStatusGet
+                  0x0014ac                  _SLAVE1_Write
+                  0x0016ca                  _SYSTEM_Initialize
                   0x0003a2                  __AddressError
                   0x00044c                  __DefaultInterrupt
                   0x057f00                  __FSEC.sec
@@ -207,7 +207,7 @@ External Symbols in Program Memory (by name):
                   0x000200                  __resetPRI
                   0x000348                  __start_slave
                   0x000354                  __stop_slave
-                  0x00149e                  _main
+                  0x00170c                  _main
                   0x000452                  _slave
 
 Memory Configuration
@@ -4258,45 +4258,45 @@ __c30_signature
  .config_MBXM15
                   0x057f48          0x2 build/default/production/mcc_generated_files/slave1.o
 
-slave_image       0x000452        0xcc0
- slave_image      0x000452        0xcc0 build/default/production/slave.o
+slave_image       0x000452        0xf2e
+ slave_image      0x000452        0xf2e build/default/production/slave.o
                   0x000452                  _slave
 
-.text             0x001112        0x376
- .text            0x001112        0x166 build/default/production/mcc_generated_files/slave1.o
-                  0x001112                  _SLAVE1_Initialize
-                  0x001122                  _SLAVE1_Start
-                  0x00112a                  _SLAVE1_Program
-                  0x00113c                  _SLAVE1_InterruptRequestGenerate
-                  0x001144                  _SLAVE1_IsInterruptRequestAcknowledged
-                  0x00115c                  _SLAVE1_InterruptRequestComplete
-                  0x001164                  _SLAVE1_IsInterruptRequested
-                  0x00117c                  _SLAVE1_InterruptRequestAcknowledge
-                  0x001184                  _SLAVE1_InterruptRequestAcknowledgeComplete
-                  0x00118c                  _SLAVE1_GetResetCause
-                  0x0011a8                  _SLAVE1_ResetCauseClear
-                  0x0011be                  _SLAVE1_SystemStatusGet
-                  0x001206                  _SLAVE1_Read
-                  0x00123e                  _SLAVE1_Write
- .text            0x001278        0x114 build/default/production/mcc_generated_files/reset.o
-                  0x001278                  _RESET_GetCause
-                  0x001280                  _RESET_CauseHandler
-                  0x001384                  _RESET_CauseClearAll
- .text            0x00138c         0x6c build/default/production/mcc_generated_files/clock.o
-                  0x00138c                  _CLOCK_Initialize
-                  0x0013e0                  _CLOCK_AuxPllLockStatusGet
- .text            0x0013f8         0x46 build/default/production/mcc_generated_files/pin_manager.o
-                  0x0013f8                  _PIN_MANAGER_Initialize
- .text            0x00143e         0x32 build/default/production/mcc_generated_files/system.o
-                  0x00145c                  _SYSTEM_Initialize
- .text            0x001470         0x18 build/default/production/mcc_generated_files/traps.o
-                  0x001470                  _TRAPS_halt_on_error
+.text             0x001380        0x376
+ .text            0x001380        0x166 build/default/production/mcc_generated_files/slave1.o
+                  0x001380                  _SLAVE1_Initialize
+                  0x001390                  _SLAVE1_Start
+                  0x001398                  _SLAVE1_Program
+                  0x0013aa                  _SLAVE1_InterruptRequestGenerate
+                  0x0013b2                  _SLAVE1_IsInterruptRequestAcknowledged
+                  0x0013ca                  _SLAVE1_InterruptRequestComplete
+                  0x0013d2                  _SLAVE1_IsInterruptRequested
+                  0x0013ea                  _SLAVE1_InterruptRequestAcknowledge
+                  0x0013f2                  _SLAVE1_InterruptRequestAcknowledgeComplete
+                  0x0013fa                  _SLAVE1_GetResetCause
+                  0x001416                  _SLAVE1_ResetCauseClear
+                  0x00142c                  _SLAVE1_SystemStatusGet
+                  0x001474                  _SLAVE1_Read
+                  0x0014ac                  _SLAVE1_Write
+ .text            0x0014e6        0x114 build/default/production/mcc_generated_files/reset.o
+                  0x0014e6                  _RESET_GetCause
+                  0x0014ee                  _RESET_CauseHandler
+                  0x0015f2                  _RESET_CauseClearAll
+ .text            0x0015fa         0x6c build/default/production/mcc_generated_files/clock.o
+                  0x0015fa                  _CLOCK_Initialize
+                  0x00164e                  _CLOCK_AuxPllLockStatusGet
+ .text            0x001666         0x46 build/default/production/mcc_generated_files/pin_manager.o
+                  0x001666                  _PIN_MANAGER_Initialize
+ .text            0x0016ac         0x32 build/default/production/mcc_generated_files/system.o
+                  0x0016ca                  _SYSTEM_Initialize
+ .text            0x0016de         0x18 build/default/production/mcc_generated_files/traps.o
+                  0x0016de                  _TRAPS_halt_on_error
 
-.dinit            0x001488         0x10
- .dinit           0x001488         0x10 data_init
+.dinit            0x0016f6         0x10
+ .dinit           0x0016f6         0x10 data_init
 
-.text             0x001498          0xc
- .text            0x001498          0x6 build/default/production/mcc_generated_files/interrupt_manager.o
-                  0x001498                  _INTERRUPT_Initialize
- .text            0x00149e          0x6 build/default/production/main.o
-                  0x00149e                  _main
+.text             0x001706          0xc
+ .text            0x001706          0x6 build/default/production/mcc_generated_files/interrupt_manager.o
+                  0x001706                  _INTERRUPT_Initialize
+ .text            0x00170c          0x6 build/default/production/main.o
+                  0x00170c                  _main

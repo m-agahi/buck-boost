@@ -1,2 +1,6 @@
 /adc tests/adc-4/adc-4-master.X/dist/
 /adc tests/adc-4/adc-4-master.X/build/
+/PWM-tests/pwm-demo/slave.X/dist/
+/PWM-tests/pwm-demo/slave.X/build/
+/PWM-tests/pwm-demo/master.X/build/
+/PWM-tests/pwm-demo/master.X/dist/

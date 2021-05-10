@@ -55,28 +55,92 @@
  */
 int main(void)
 {
-    int highOutputPin, lowOutputPin, pwmIOConH, period, dutyCycle,DTCMPSELReg, PMODReg;
-    int ADCResult;
+    int highOutputPin, lowOutputPin, pwmIOConH, DTCMPSELReg, PMODReg;
+    int ADCResult, Q2, Q6;
+    unsigned int period, dutyCycle;
     //enum ADC1_CHANNEL ADCChannel = channel_S1AN0;
     
     // initialize the device
     SYSTEM_Initialize();
     
-    highOutputPin = 1; // PIN C14 //0
-    lowOutputPin = 0; // PIN C15  //1
-    period = 39992;
+    int operationMode = 1; // 0: off, 1: buck, 2: boost, 3: buck-boost
+    
+    switch (operationMode)
+    {
+        case 0:
+            highOutputPin = 0; // PIN C14
+            lowOutputPin = 0; // PIN C15
+            Q6 = 0; // OFF
+            Q2 = 0; // OFF
+            break;
+        case 1:
+            highOutputPin = 1; // PIN C14
+            lowOutputPin = 0; // PIN C15
+            Q6 = 2; // PWM
+            Q2 = 0; // OFF
+            break;
+        case 2:
+            highOutputPin = 0; // PIN C14
+            lowOutputPin = 1; // PIN C15
+            Q6 = 1; // ON
+            Q2 = 2; // PWM
+            break;
+        case 3:
+            highOutputPin = 1; // PIN C14
+            lowOutputPin = 1; // PIN C15
+            Q6 = 2; // PWM
+            Q2 = 2; // PWM
+            break;
+    }
+    
+    
+    int dutyCycleCalculate (unsigned int periodTemp, float percent)
+    {
+        unsigned int onePercent;
+        unsigned int dutyCycleTemp;
+        onePercent = (periodTemp + 8) / 100;
+        dutyCycleTemp = (int)(onePercent * percent);
+        return (dutyCycleTemp);
+    }
+    
+   
+    
+    
+    //period = 39992; // 100 kHz
+    period = 39992; // 100 kHz
+    //dutyCycle = 7.65; // for 6.37 V output with boost mode
+    dutyCycle = 80;
+    dutyCycle = dutyCycleCalculate(period, dutyCycle);  
+
+    
+    
+    
+    
+    
+    
     //dutyCycle = 3060; //6.6?
-    dutyCycle = 38000;
+    //dutyCycle = 38000;
 
     DTCMPSELReg=1; // Dead-time compensation is controlled by PCI feed-forward limit logic
     PMODReg= 1; // PWM Generator outputs operate in Independent mode
     _LATE0 = 0;
     _LATE1 = 0;
-    
 
     pwmIOConH = (PMODReg << 4) + (highOutputPin << 3) + (lowOutputPin << 2) + (DTCMPSELReg << 7);
     PWM_Initialize(period, dutyCycle, pwmIOConH);
     
+    if (Q6 == 0)
+    {
+        _LATC14 = 1;
+    }
+    else if (Q6 == 1)
+    {
+        _LATC14 = 0;
+    }
+    if (Q2 == 0)
+    {
+        _LATC15 = 0;
+    }
     
     
     ADC_SetConfiguration(ADC_CONFIGURATION_DEFAULT, false, true, true);
@@ -100,6 +164,8 @@ int main(void)
 
             
         //}
+            
+        ADCResult = dutyCycle;
         
         if ( ADCResult <= 1024 )
         {
