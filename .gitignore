@@ -4,3 +4,7 @@
 /PWM-tests/pwm-demo/slave.X/build/
 /PWM-tests/pwm-demo/master.X/build/
 /PWM-tests/pwm-demo/master.X/dist/
+/potentiometer-tests/pot-1/slave.X/dist/
+/potentiometer-tests/pot-1/slave.X/build/
+/potentiometer-tests/pot-1/pot-1-master.X/build/
+/potentiometer-tests/pot-1/pot-1-master.X/dist/
