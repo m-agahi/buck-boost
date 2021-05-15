@@ -53,14 +53,15 @@
 #include "system_types.h"
 #include "reset.h"
 
-#include "master.h"
-#include "watchdog.h"
-#include "clc1.h"
 #include "reset.h"
+#include "watchdog.h"
+#include "pwm.h"
+#include "adc1.h"
+#include "delay.h"
+#include "master.h"
+#include "clc1.h"
 #include "interrupt_manager.h"
 #include "traps.h"
-#include "adc1.h"
-#include "pwm.h"
 
 #warning "This file will be removed in future MCC releases. Use system.h instead."
 

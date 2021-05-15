@@ -8,3 +8,7 @@
 /potentiometer-tests/pot-1/slave.X/build/
 /potentiometer-tests/pot-1/pot-1-master.X/build/
 /potentiometer-tests/pot-1/pot-1-master.X/dist/
+/operation-change-tests/opc-1/slave.X/build/
+/operation-change-tests/opc-1/slave.X/dist/
+/operation-change-tests/opc-1/opc-1-master.X/build/
+/operation-change-tests/opc-1/opc-1-master.X/dist/

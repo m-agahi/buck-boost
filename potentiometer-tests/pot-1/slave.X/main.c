@@ -48,8 +48,10 @@
 #include "mcc_generated_files/system.h"
 #include "mcc_generated_files/pwm.h"
 #include "mcc_generated_files/adc1.h"
-#define    FCY    16000000UL    // Instruction cycle frequency, Hz - required for __delayXXX() to work
-#include <libpic30.h>        // __delayXXX() functions macros defined here
+#include "mcc_generated_files/delay.h"
+#include "opmode.c"
+//#define    FCY    16000000UL    // Instruction cycle frequency, Hz - required for __delayXXX() to work
+//#include <libpic30.h>        // __delayXXX() functions macros defined here
 /*
                          Main application
  */
@@ -190,11 +192,13 @@ int main(void)
         
         
         
-        __delay_ms(500)
+        //__delay_ms(500);
+        DELAY_milliseconds(500);    
             _LATE0 = 0;
             _LATE1 = 0;
         
-        __delay_ms(500)
+        //__delay_ms(500);
+        DELAY_milliseconds(500);    
 
     }
     return 1; 

@@ -202,6 +202,152 @@
 #define channel_S1AN0_SetDigitalOutput() (_TRISA3 = 0)
 /**
   @Summary
+    Sets the GPIO pin, RA4, high using LATA4.
+
+  @Description
+    Sets the GPIO pin, RA4, high using LATA4.
+
+  @Preconditions
+    The RA4 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RA4 high (1)
+    channel_S1AN1_SetHigh();
+    </code>
+
+*/
+#define channel_S1AN1_SetHigh()          (_LATA4 = 1)
+/**
+  @Summary
+    Sets the GPIO pin, RA4, low using LATA4.
+
+  @Description
+    Sets the GPIO pin, RA4, low using LATA4.
+
+  @Preconditions
+    The RA4 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RA4 low (0)
+    channel_S1AN1_SetLow();
+    </code>
+
+*/
+#define channel_S1AN1_SetLow()           (_LATA4 = 0)
+/**
+  @Summary
+    Toggles the GPIO pin, RA4, using LATA4.
+
+  @Description
+    Toggles the GPIO pin, RA4, using LATA4.
+
+  @Preconditions
+    The RA4 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Toggle RA4
+    channel_S1AN1_Toggle();
+    </code>
+
+*/
+#define channel_S1AN1_Toggle()           (_LATA4 ^= 1)
+/**
+  @Summary
+    Reads the value of the GPIO pin, RA4.
+
+  @Description
+    Reads the value of the GPIO pin, RA4.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    uint16_t portValue;
+
+    // Read RA4
+    postValue = channel_S1AN1_GetValue();
+    </code>
+
+*/
+#define channel_S1AN1_GetValue()         _RA4
+/**
+  @Summary
+    Configures the GPIO pin, RA4, as an input.
+
+  @Description
+    Configures the GPIO pin, RA4, as an input.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RA4 as an input
+    channel_S1AN1_SetDigitalInput();
+    </code>
+
+*/
+#define channel_S1AN1_SetDigitalInput()  (_TRISA4 = 1)
+/**
+  @Summary
+    Configures the GPIO pin, RA4, as an output.
+
+  @Description
+    Configures the GPIO pin, RA4, as an output.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RA4 as an output
+    channel_S1AN1_SetDigitalOutput();
+    </code>
+
+*/
+#define channel_S1AN1_SetDigitalOutput() (_TRISA4 = 0)
+/**
+  @Summary
     Sets the GPIO pin, RC1, high using LATC1.
 
   @Description
