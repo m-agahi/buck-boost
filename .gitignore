@@ -12,3 +12,7 @@
 /operation-change-tests/opc-1/slave.X/dist/
 /operation-change-tests/opc-1/opc-1-master.X/build/
 /operation-change-tests/opc-1/opc-1-master.X/dist/
+/feedback-loop-tests/slave.X/build/
+/feedback-loop-tests/slave.X/dist/
+/feedback-loop-tests/fbl-1-master.X/build/
+/feedback-loop-tests/fbl-1-master.X/dist/
