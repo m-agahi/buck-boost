@@ -16,3 +16,7 @@
 /feedback-loop-tests/slave.X/dist/
 /feedback-loop-tests/fbl-1-master.X/build/
 /feedback-loop-tests/fbl-1-master.X/dist/
+/feedback-loop-tests/fbl-3/slave.X/build/
+/feedback-loop-tests/fbl-3/slave.X/dist/
+/feedback-loop-tests/fbl-3/fbl-3-master.X/dist/
+/feedback-loop-tests/fbl-3/fbl-3-master.X/build/
