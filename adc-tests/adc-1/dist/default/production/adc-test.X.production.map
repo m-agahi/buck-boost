@@ -1,0 +1,107 @@
+Microchip Technology Inc, v1.61 (B)
+
+Tool Name:
+  /opt/microchip/xc16/v1.61/bin/bin/../bin/elf-ld
+
+Command:
+  -p33CH512MP508 \
+  --mdfp=/home/max/.mchp_packs/Microchip/dsPIC33CH-MP_DFP/1.5.179/xc16 \
+  -o \
+  dist/default/production/adc-test.X.production.elf \
+  -L/opt/microchip/xc16/v1.61/bin/bin/.. \
+  -L/home/max/.mchp_packs/Microchip/dsPIC33CH-MP_DFP/1.5.179/xc16/bin/../support/dsPIC33C/gld \
+  -L/opt/microchip/xc16/v1.61/bin/bin/../../lib \
+  -L/opt/microchip/xc16/v1.61/bin/bin/../../support/PIC24E/gld \
+  -L/opt/microchip/xc16/v1.61/bin/bin/../../support/PIC24F/gld \
+  -L/opt/microchip/xc16/v1.61/bin/bin/../../support/PIC24H/gld \
+  -L/opt/microchip/xc16/v1.61/bin/bin/../../support/dsPIC30F/gld \
+  -L/opt/microchip/xc16/v1.61/bin/bin/../../support/dsPIC33C/gld \
+  -L/opt/microchip/xc16/v1.61/bin/bin/../../support/dsPIC33E/gld \
+  -L/opt/microchip/xc16/v1.61/bin/bin/../../support/dsPIC33F/gld \
+  build/default/production/adc.o \
+  build/default/production/buttons.o \
+  build/default/production/leds.o \
+  build/default/production/timer_1ms.o \
+  build/default/production/system.o \
+  build/default/production/leds_rgb.o \
+  build/default/production/sccp.o \
+  build/default/production/uart1.o \
+  build/default/production/uart_printf.o \
+  build/default/production/main.o \
+  build/default/production/debounce.o \
+  build/default/production/msi.o \
+  build/default/production/mcc_generated_files/pwm.o \
+  build/default/production/mcc_generated_files/mcc.o \
+  build/default/production/mcc_generated_files/clock.o \
+  build/default/production/mcc_generated_files/traps.o \
+  build/default/production/mcc_generated_files/system.o \
+  build/default/production/mcc_generated_files/interrupt_manager.o \
+  build/default/production/mcc_generated_files/pin_manager.o \
+  build/default/production/mcc_generated_files/reset.o \
+  build/default/production/slave.o \
+  --local-stack \
+  --defsym=__MPLAB_BUILD=1 \
+  -Tp33CH512MP508.gld.00 \
+  --stack=16 \
+  --check-sections \
+  --data-init \
+  --pack-data \
+  --handles \
+  --isr \
+  --no-gc-sections \
+  --fill-upper=0 \
+  --stackguard=16 \
+  --no-force-link \
+  --smart-io \
+  -Map=dist/default/production/adc-test.X.production.map \
+  --report-mem \
+  --memorysummary \
+  dist/default/production/memoryfile.xml \
+  -start-group \
+  --library=lega-pic30-elf \
+  --library=m-elf \
+  --library=lega-c-elf \
+  -end-group \
+
+
+Optional library libp33CH512MP508.a not found
+Archive member included because of file (symbol)
+
+/opt/microchip/xc16/v1.61/bin/bin/../../lib/liblega-pic30-elf.a(crt0_dualch.o)
+                              (__resetPRI)
+/opt/microchip/xc16/v1.61/bin/bin/../../lib/liblega-pic30-elf.a(data_init_dualch.o)
+                              /opt/microchip/xc16/v1.61/bin/bin/../../lib/liblega-pic30-elf.a(crt0_dualch.o) (__data_init_duo)
+/opt/microchip/xc16/v1.61/bin/bin/../../lib/liblega-pic30-elf.a(crt_start_mode_normalch.Leo)
+                              (__crt_start_mode_normal)
+/opt/microchip/xc16/v1.61/bin/bin/../../lib/liblega-pic30-elf.a(delay32ch.Leo)
+                              build/default/production/system.o (___delay32)
+/opt/microchip/xc16/v1.61/bin/bin/../../lib/libm-elf.a(addsf3.cheo)
+                              build/default/production/sccp.o (___addsf3)
+/opt/microchip/xc16/v1.61/bin/bin/../../lib/libm-elf.a(divsf3.cheo)
+                              build/default/production/leds_rgb.o (___divsf3)
+/opt/microchip/xc16/v1.61/bin/bin/../../lib/libm-elf.a(feqltle.cheo)
+                              build/default/production/sccp.o (___lesf2)
+/opt/microchip/xc16/v1.61/bin/bin/../../lib/libm-elf.a(fgtge.cheo)
+                              build/default/production/sccp.o (___gesf2)
+/opt/microchip/xc16/v1.61/bin/bin/../../lib/libm-elf.a(fixunssfsi.cheo)
+                              build/default/production/sccp.o (___fixunssfsi)
+/opt/microchip/xc16/v1.61/bin/bin/../../lib/libm-elf.a(floatunsisf.cheo)
+                              build/default/production/leds_rgb.o (___floatunsisf)
+/opt/microchip/xc16/v1.61/bin/bin/../../lib/libm-elf.a(fpack.cheo)
+                              /opt/microchip/xc16/v1.61/bin/bin/../../lib/libm-elf.a(addsf3.cheo) (__fpack)
+/opt/microchip/xc16/v1.61/bin/bin/../../lib/libm-elf.a(funpack.cheo)
+                              /opt/microchip/xc16/v1.61/bin/bin/../../lib/libm-elf.a(fixunssfsi.cheo) (__funpack)
+/opt/microchip/xc16/v1.61/bin/bin/../../lib/libm-elf.a(funpack2.cheo)
+                              /opt/microchip/xc16/v1.61/bin/bin/../../lib/libm-elf.a(addsf3.cheo) (__funpack2)
+/opt/microchip/xc16/v1.61/bin/bin/../../lib/libm-elf.a(futil.cheo)
+                              /opt/microchip/xc16/v1.61/bin/bin/../../lib/libm-elf.a(addsf3.cheo) (__fPropagateNaN)
+/opt/microchip/xc16/v1.61/bin/bin/../../lib/libm-elf.a(mulsf3.cheo)
+                              build/default/production/sccp.o (___mulsf3)
+/opt/microchip/xc16/v1.61/bin/bin/../../lib/libm-elf.a(udivsi3.cheo)
+                              build/default/production/adc.o (___udivsi3)
+/opt/microchip/xc16/v1.61/bin/bin/../../lib/libm-elf.a(fcompare.cheo)
+                              /opt/microchip/xc16/v1.61/bin/bin/../../lib/libm-elf.a(feqltle.cheo) (__fcompare)
+/opt/microchip/xc16/v1.61/bin/bin/../../lib/libm-elf.a(floatundisf.cheo)
+                              /opt/microchip/xc16/v1.61/bin/bin/../../lib/libm-elf.a(floatunsisf.cheo) (___floatundisf)
+/opt/microchip/xc16/v1.61/bin/bin/../../lib/liblega-c-elf.a(memset.CH_eo)
+                              build/default/production/timer_1ms.o (_memset)

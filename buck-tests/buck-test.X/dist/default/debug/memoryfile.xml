@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+  <executable name="dist/default/debug/buck-test.X.debug.elf">
+    <memory name="data">
+      <units>bytes</units>
+      <length>49152</length>
+      <used>114</used>
+      <free>49038</free>
+    </memory>
+    <memory name="program">
+      <units>bytes</units>
+      <length>539520</length>
+      <used>4020</used>
+      <free>535500</free>
+    </memory>
+  </executable>
+</project>
